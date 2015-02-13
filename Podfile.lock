@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Canvas (0.1.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - Canvas
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  Canvas: ae2faca05a15c4d6659fb3ae5e2a14817df4449a
 
 COCOAPODS: 0.35.0
