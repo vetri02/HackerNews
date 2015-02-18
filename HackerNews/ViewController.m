@@ -8,10 +8,14 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *dialogView;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 - (IBAction)loginButtonDidPress:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *usernameImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *passwordImageView;
 
 @end
 
@@ -25,10 +29,44 @@
     
     [self setNeedsStatusBarAppearanceUpdate];
     
+    self.usernameTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+    
     NSString *fullURL = @"https://github.com/philipl/pifs";
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [_viewWeb loadRequest:requestObj];
+    
+}
+
+-(void) textFieldDidBeginEditing:(UITextField *)textField {
+    //Username Field is active
+    if ([textField isEqual:self.usernameTextField]) {
+    
+        //NSLog(@"username");
+        self.usernameImageView.image = [UIImage imageNamed:@"userSolid"];
+        //self.usernameTextField.borderStyle = UITextBorderStyleLine;
+        
+    } else {
+    
+        self.usernameImageView.image = [UIImage imageNamed:@"userLine"];
+        //self.usernameTextField.borderStyle = UITextBorderStyleNone;
+    
+    }
+    
+    //Password Field is active
+    if ([textField isEqual:self.passwordTextField]){
+        
+        //NSLog(@"password");
+        self.passwordImageView.image = [UIImage imageNamed:@"lockSolid"];
+        //self.passwordTextField.borderStyle = UITextBorderStyleLine;
+    
+    } else {
+       
+        self.passwordImageView.image = [UIImage imageNamed:@"lockLine"];
+        //self.passwordTextField.borderStyle = UITextBorderStyleNone;
+   
+    }
     
 }
 
@@ -71,7 +109,11 @@
     // animationWithDuration with Damping
     [UIView animateWithDuration:0.7 delay:0 usingSpringWithDamping:0.5
           initialSpringVelocity:0 options:0 animations:^{
-              [self.dialogView setFrame:CGRectMake(self.dialogView.frame.origin.x, self.dialogView.frame.origin.y, self.dialogView.frame.size.width, 320)];
+              //Change the size of dialogview
+              //Make sure it's run only once
+              if(self.dialogView.frame.origin.y == 148){
+                  [self.dialogView setFrame:CGRectMake(self.dialogView.frame.origin.x, self.dialogView.frame.origin.y-60, self.dialogView.frame.size.width, 320)];
+              }
           } completion:^(BOOL finished){
               
           }];
