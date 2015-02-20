@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ListTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *commentsLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *commentIamgeView;
-@property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *commentsLabel;
+//@property (weak, nonatomic) IBOutlet UIImageView *commentIamgeView;
+//@property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
 
 @end
