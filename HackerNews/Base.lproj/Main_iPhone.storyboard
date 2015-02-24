@@ -484,7 +484,7 @@
                             <outlet property="delegate" destination="0eC-IM-khP" id="B0b-rH-5XT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Hacker News" id="PVS-eM-nhv"/>
+                    <navigationItem key="navigationItem" title="Top Stories" id="PVS-eM-nhv"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLM-5g-Hiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
