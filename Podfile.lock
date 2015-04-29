@@ -9,8 +9,8 @@ DEPENDENCIES:
   - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
-  Canvas: ae2faca05a15c4d6659fb3ae5e2a14817df4449a
-  Firebase: e7a2ea2ffeff99f9c37028b354194dcc9718d36b
-  TPKeyboardAvoiding: 0797ad5f2366e2435e605202b01f3b7cff5d82cd
+  Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
+  Firebase: e5f9cf72c72a9fdaf7e136012b6c52a263a23ca7
+  TPKeyboardAvoiding: ee4dd35e3bb7bb64bfbda47e7cc9ba872ff10f77
 
 COCOAPODS: 0.35.0

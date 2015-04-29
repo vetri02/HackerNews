@@ -11,6 +11,7 @@
 
 @interface ViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIWebView *viewWeb;
+@property (strong, nonatomic) UIProgressView *progressView;
 
 
 @end
