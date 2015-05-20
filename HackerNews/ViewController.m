@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *dialogView;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -99,6 +100,8 @@
 
 - (IBAction)loginButtonDidPress:(id)sender {
     //Animate Login Button
+    
+
     
     [UIView animateWithDuration:0.1 animations:^{
         self.loginButton.transform = CGAffineTransformMakeTranslation(10, 0);
