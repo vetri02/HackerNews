@@ -39,7 +39,6 @@
         self.dataArr = snapshot.value;
         
         
-        
         NSLog (@"Number of elements in array = %lu", [self.dataArr count]);
         
         self.temporaryTop100StoriesIds = [snapshot.value mutableCopy];

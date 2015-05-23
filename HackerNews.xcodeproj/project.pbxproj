@@ -108,8 +108,6 @@
 		1B37175C198E27F600FF0B04 = {
 			isa = PBXGroup;
 			children = (
-				1B68826C1B0C7C9E00235DF2 /* Fabric.framework */,
-				1B68826D1B0C7C9E00235DF2 /* Crashlytics.framework */,
 				1B37176E198E27F600FF0B04 /* HackerNews */,
 				1B371790198E27F600FF0B04 /* HackerNewsTests */,
 				1B371767198E27F600FF0B04 /* Frameworks */,
@@ -130,6 +128,8 @@
 		1B371767198E27F600FF0B04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B68826C1B0C7C9E00235DF2 /* Fabric.framework */,
+				1B68826D1B0C7C9E00235DF2 /* Crashlytics.framework */,
 				1B371768198E27F600FF0B04 /* Foundation.framework */,
 				1B37176A198E27F600FF0B04 /* CoreGraphics.framework */,
 				1B37176C198E27F600FF0B04 /* UIKit.framework */,
