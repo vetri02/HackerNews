@@ -155,10 +155,10 @@
 				1B371781198E27F600FF0B04 /* ViewController.m */,
 				1B906AE61A94AEC000AAF25D /* HomeTableViewController.h */,
 				1B906AE71A94AEC000AAF25D /* HomeTableViewController.m */,
-				1B371783198E27F600FF0B04 /* Images.xcassets */,
-				1B37176F198E27F600FF0B04 /* Supporting Files */,
 				1B6882631B0B7BE700235DF2 /* StoryTableViewCell.h */,
 				1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */,
+				1B371783198E27F600FF0B04 /* Images.xcassets */,
+				1B37176F198E27F600FF0B04 /* Supporting Files */,
 			);
 			path = HackerNews;
 			sourceTree = "<group>";

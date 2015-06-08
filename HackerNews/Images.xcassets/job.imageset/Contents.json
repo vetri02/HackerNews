@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "PollOpt.png"
+      "filename" : "job.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "PollOpt@2x.png"
+      "filename" : "job@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "PollOpt@3x.png"
+      "filename" : "job@3x.png"
     }
   ],
   "info" : {

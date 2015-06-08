@@ -1,16 +1,25 @@
 PODS:
   - Canvas (0.1.2)
-  - Firebase (2.2.0)
+  - Firebase (2.2.2)
+  - MBProgressHUD (0.9.1)
+  - NSDate+TimeAgo (1.0.3)
   - TPKeyboardAvoiding (1.2.6)
+  - Underscore.m (0.2.1)
 
 DEPENDENCIES:
   - Canvas
   - Firebase (>= 2.2.0)
+  - MBProgressHUD (~> 0.9.1)
+  - NSDate+TimeAgo (~> 1.0.2)
   - TPKeyboardAvoiding
+  - Underscore.m (~> 0.2)
 
 SPEC CHECKSUMS:
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
-  Firebase: e5f9cf72c72a9fdaf7e136012b6c52a263a23ca7
+  Firebase: e35cdd2561bf4fea9c1e384e9400a9c173d19e47
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
   TPKeyboardAvoiding: ee4dd35e3bb7bb64bfbda47e7cc9ba872ff10f77
+  Underscore.m: b86ca364d60509a39eb9c7886443c063b793aaba
 
 COCOAPODS: 0.35.0

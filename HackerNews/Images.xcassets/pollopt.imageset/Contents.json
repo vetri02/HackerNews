@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Comment.png"
+      "filename" : "pollopt.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Comment@2x.png"
+      "filename" : "pollopt@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "Comment@3x.png"
+      "filename" : "pollopt@3x.png"
     }
   ],
   "info" : {

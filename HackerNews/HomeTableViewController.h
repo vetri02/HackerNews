@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeTableViewController : UITableViewController
+@class MBProgressHUD;
+
+@interface HomeTableViewController : UITableViewController{
+    MBProgressHUD *HUD;
+}
+
+@property (nonatomic, strong) NSMutableArray* storiesArray;
 
 @end
