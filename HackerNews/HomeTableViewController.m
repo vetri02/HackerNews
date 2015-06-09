@@ -11,6 +11,7 @@
 #import "StoryTableViewCell.h"
 #import "MBProgressHUD.h"
 #import "NSDate+TimeAgo.h"
+#import <PureLayout/PureLayout.h>
 
 
 
@@ -45,7 +46,7 @@
         //NSLog(@"%@", snapshot.value);
         self.dataArr = [snapshot.value mutableCopy];
         
-        [HUD hide:YES];
+        
         //NSLog (@"Number of elements in array = %d", [self.dataArr count]);
         
         
@@ -135,45 +136,7 @@
     
     
     self.tableView.scrollsToTop = YES;
-
     
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-//    Firebase *ref = [[Firebase alloc] initWithUrl:@"https://hacker-news.firebaseio.com/v0/"];
-//    //__block Firebase *itemRef = nil;
-//    Firebase *topStories = [ref childByAppendingPath:@"topstories"];
-//    //Firebase *firstStory = [topStories childByAppendingPath:@"0"];
-//    //__block NSMutableArray *listStories = [[NSMutableArray alloc] init];
-//    // Attach a block to read the data at our posts reference
-//    [topStories observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        NSLog(@"%@", snapshot.value);
-//        //[listStories addObject:(snapshot.value)];
-//    } withCancelBlock:^(NSError *error) {
-//        NSLog(@"%@", error.description);
-//    }];
-    
-    
-    
-    //NSLog(@"%@", listStories);
-    
-//    FirebaseHandle handle = [firstStory observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        if(itemRef != nil) {
-//            [itemRef removeObserverWithHandle: handle];
-//        }
-//        
-//        NSString *itemId = [NSString stringWithFormat:@"item/%@",snapshot.value];
-//        itemRef = [ref childByAppendingPath:itemId];
-//        
-//        [itemRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *itemSnap) {
-//            NSLog(@"%@", itemSnap.value);
-//        }];
-//    }];
 }
 
 
@@ -230,51 +193,36 @@
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     
-//    cell.titleLabel.numberOfLines = 2;
-//    [cell.titleLabel sizeToFit];
-    
-    //NSString *labelText = [story valueForKey:@"title"];
-    //NSLog(@"Output is: \"%lu\"", [self getLabelHeight:cell.titleLabel]);
-    
-    [cell.titleLabel sizeToFit];
-    int numLines = (int)(cell.titleLabel.frame.size.height/cell.titleLabel.font.leading);
-    NSLog(@"Output is: \"%@\"", [story valueForKey:@"title"]);
-    NSLog(@"Output is: \"%d\"", numLines);
-    
-    if(numLines == 1){
-        cell.titleLabel.numberOfLines = 1;
-        [cell.titleLabel sizeToFit];
-    } else {
-        cell.titleLabel.numberOfLines = 2;
-        [cell.titleLabel sizeToFit];
-    }
-    
+    [HUD hide:YES];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
-    NSString* text = [story valueForKey:@"title"];
-    NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:text attributes:
-                                             @{ NSFontAttributeName: [UIFont systemFontOfSize:16]}];
+   
+    return 95;
+}
+
+-(float) getHeightForText:(NSString*) text withFont:(UIFont*) font andWidth:(float) width{
+    CGSize constraint = CGSizeMake(width , 20000.0f);
+    CGSize title_size;
+    float totalHeight;
     
-    //its not possible to get the cell label width since this method is called before cellForRow so best we can do
-    //is get the table width and subtract the default extra space on either side of the label.
-    CGSize constraintSize = CGSizeMake(tableView.frame.size.width - 30, MAXFLOAT);
+    SEL selector = @selector(boundingRectWithSize:options:attributes:context:);
+    if ([text respondsToSelector:selector]) {
+        title_size = [text boundingRectWithSize:constraint
+                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                     attributes:@{ NSFontAttributeName : font }
+                                        context:nil].size;
+        
+        totalHeight = ceil(title_size.height);
+    } else {
+        
+    }
     
-    CGRect rect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
-    
-    //NSLog(@"Output is: \"%d\"", rect.size.height);
-    
-    //Add back in the extra padding above and below label on table cell.
-    rect.size.height = rect.size.height + 23;
-    
-    //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
-    return (rect.size.height < 44 ? 95 : 105);
-    
-    //return 105;
+    CGFloat height = MAX(totalHeight, 20.0f);
+    return height;
 }
 
 
