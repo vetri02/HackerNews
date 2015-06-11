@@ -22,6 +22,8 @@
 @property NSMutableArray *storyEventRefs;
 @property NSMutableArray *dataArr;
 @property NSMutableArray *heights;
+@property (nonatomic, strong) StoryTableViewCell *prototypeCell;
+
 
 
 
@@ -29,6 +31,7 @@
 @end
 
 @implementation HomeTableViewController
+
 
 
 
@@ -136,6 +139,9 @@
     
     
     self.tableView.scrollsToTop = YES;
+    self.tableView.estimatedRowHeight = 95.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+
     
 }
 
@@ -161,6 +167,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"storyCell" forIndexPath:indexPath];
+    
+    
     
     // Get data from the array at position of the row
     NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
@@ -193,16 +201,34 @@
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     
+    cell.titleLabel.numberOfLines = 0;
+    [cell.titleLabel sizeToFit];
+    
     [HUD hide:YES];
     
+    
+    
     return cell;
+}
+
+- (StoryTableViewCell *)prototypeCell
+{
+    static NSString *StoryTableViewCellIdentifier = @"StoryTableViewCell";
+    if (!_prototypeCell)
+    {
+        _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:StoryTableViewCellIdentifier];
+    }
+    return _prototypeCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    return 95;
+    
+    return 105;
 }
+
+
 
 -(float) getHeightForText:(NSString*) text withFont:(UIFont*) font andWidth:(float) width{
     CGSize constraint = CGSizeMake(width , 20000.0f);
@@ -224,6 +250,8 @@
     CGFloat height = MAX(totalHeight, 20.0f);
     return height;
 }
+
+
 
 
 

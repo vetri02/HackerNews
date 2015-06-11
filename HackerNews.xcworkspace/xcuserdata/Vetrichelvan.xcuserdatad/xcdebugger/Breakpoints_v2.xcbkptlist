@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HackerNews/HomeTableViewController.m"
-            timestampString = "455554438.500765"
+            timestampString = "455722938.248725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "-getHeightForText:withFont:andWidth:"
             landmarkType = "5">
          </BreakpointContent>
