@@ -128,6 +128,8 @@
     self.storiesArray = [[NSMutableArray alloc] init];
     self.heights = [[NSMutableArray alloc] init];
     
+    [self.navigationController setTitle:@"Live"];
+    
     [self getTopStories];
     
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -139,9 +141,7 @@
     
     
     self.tableView.scrollsToTop = YES;
-    self.tableView.estimatedRowHeight = 95.0;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-
+    
     
 }
 
@@ -165,7 +165,17 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+
 {
+    
+//    static NSString *CellIdentifier = @"storyCell";
+//    StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    
+//    if (cell==nil) {
+//        cell = [[StoryTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+//        
+//    }
+    
     StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"storyCell" forIndexPath:indexPath];
     
     
@@ -189,7 +199,7 @@
     NSURL* url = [NSURL URLWithString:[story valueForKey:@"url"]];
     NSString* reducedUrl = [NSString stringWithFormat:
                             @"%@",url.host];
-    //NSLog(@"Output is: \"%@\"", reducedUrl);
+    NSLog(@"Output is: \"%@\"", reducedUrl);
     
     // Apply the data to each row
     cell.titleLabel.text = [story valueForKey:@"title"];
@@ -211,49 +221,32 @@
     return cell;
 }
 
-- (StoryTableViewCell *)prototypeCell
-{
-    static NSString *StoryTableViewCellIdentifier = @"StoryTableViewCell";
-    if (!_prototypeCell)
-    {
-        _prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:StoryTableViewCellIdentifier];
-    }
-    return _prototypeCell;
-}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
+    NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
+    NSString* text = [story valueForKey:@"title"];
+    NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:text attributes:
+                                                                                               @{ NSFontAttributeName: [UIFont systemFontOfSize:16]}];
     
-    return 105;
+        //its not possible to get the cell label width since this method is called before cellForRow so best we can do
+        //is get the table width and subtract the default extra space on either side of the label.
+    CGSize constraintSize = CGSizeMake(300 - 30, MAXFLOAT);
+    
+    CGRect rect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
+    
+        //NSLog(@"Output is: \"%d\"", rect.size.height);
+    
+        //Add back in the extra padding above and below label on table cell.
+        rect.size.height = rect.size.height + 23;
+    
+        //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
+    
+    return (rect.size.height < 44 ? 95 : 110);
+    //return 95;
 }
-
-
-
--(float) getHeightForText:(NSString*) text withFont:(UIFont*) font andWidth:(float) width{
-    CGSize constraint = CGSizeMake(width , 20000.0f);
-    CGSize title_size;
-    float totalHeight;
-    
-    SEL selector = @selector(boundingRectWithSize:options:attributes:context:);
-    if ([text respondsToSelector:selector]) {
-        title_size = [text boundingRectWithSize:constraint
-                                        options:NSStringDrawingUsesLineFragmentOrigin
-                                     attributes:@{ NSFontAttributeName : font }
-                                        context:nil].size;
-        
-        totalHeight = ceil(title_size.height);
-    } else {
-        
-    }
-    
-    CGFloat height = MAX(totalHeight, 20.0f);
-    return height;
-}
-
-
-
-
 
 
 @end
