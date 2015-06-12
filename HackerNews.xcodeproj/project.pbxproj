@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1B67761B2ACAE4007CD192 /* StoryTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1B67751B2ACAE4007CD192 /* StoryTableCellView.xib */; };
+		1B1B67791B2AD319007CD192 /* LatestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1B67781B2AD319007CD192 /* LatestTableViewController.m */; };
+		1B1B677C1B2AE22B007CD192 /* JobsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1B677B1B2AE22B007CD192 /* JobsTableViewController.m */; };
 		1B1FBEB619D7048B0021FC10 /* Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1FBEB519D7048B0021FC10 /* Gradient.m */; };
 		1B1FBEB919D70D8E0021FC10 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1FBEB819D70D8E0021FC10 /* CustomButton.m */; };
 		1B371769198E27F600FF0B04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B371768198E27F600FF0B04 /* Foundation.framework */; };
@@ -43,6 +46,11 @@
 
 /* Begin PBXFileReference section */
 		118B4724AAFC459102096B90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B1B67751B2ACAE4007CD192 /* StoryTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryTableCellView.xib; sourceTree = "<group>"; };
+		1B1B67771B2AD319007CD192 /* LatestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatestTableViewController.h; sourceTree = "<group>"; };
+		1B1B67781B2AD319007CD192 /* LatestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatestTableViewController.m; sourceTree = "<group>"; };
+		1B1B677A1B2AE22B007CD192 /* JobsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsTableViewController.h; sourceTree = "<group>"; };
+		1B1B677B1B2AE22B007CD192 /* JobsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsTableViewController.m; sourceTree = "<group>"; };
 		1B1FBEB419D7048B0021FC10 /* Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gradient.h; sourceTree = "<group>"; };
 		1B1FBEB519D7048B0021FC10 /* Gradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gradient.m; sourceTree = "<group>"; };
 		1B1FBEB719D70D8E0021FC10 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
@@ -155,10 +163,15 @@
 				1B371781198E27F600FF0B04 /* ViewController.m */,
 				1B906AE61A94AEC000AAF25D /* HomeTableViewController.h */,
 				1B906AE71A94AEC000AAF25D /* HomeTableViewController.m */,
+				1B1B67771B2AD319007CD192 /* LatestTableViewController.h */,
+				1B1B67781B2AD319007CD192 /* LatestTableViewController.m */,
+				1B1B677A1B2AE22B007CD192 /* JobsTableViewController.h */,
+				1B1B677B1B2AE22B007CD192 /* JobsTableViewController.m */,
 				1B6882631B0B7BE700235DF2 /* StoryTableViewCell.h */,
 				1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */,
 				1B371783198E27F600FF0B04 /* Images.xcassets */,
 				1B37176F198E27F600FF0B04 /* Supporting Files */,
+				1B1B67751B2ACAE4007CD192 /* StoryTableCellView.xib */,
 			);
 			path = HackerNews;
 			sourceTree = "<group>";
@@ -286,6 +299,7 @@
 				1B371784198E27F600FF0B04 /* Images.xcassets in Resources */,
 				1B37177C198E27F600FF0B04 /* Main_iPhone.storyboard in Resources */,
 				1B371773198E27F600FF0B04 /* InfoPlist.strings in Resources */,
+				1B1B67761B2ACAE4007CD192 /* StoryTableCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,9 +369,11 @@
 				1B371779198E27F600FF0B04 /* AppDelegate.m in Sources */,
 				1B6882651B0B7BE700235DF2 /* StoryTableViewCell.m in Sources */,
 				1B371775198E27F600FF0B04 /* main.m in Sources */,
+				1B1B67791B2AD319007CD192 /* LatestTableViewController.m in Sources */,
 				1B906AEB1A94FCB100AAF25D /* ListTableViewCell.m in Sources */,
 				1B906AE81A94AEC000AAF25D /* HomeTableViewController.m in Sources */,
 				1B1FBEB619D7048B0021FC10 /* Gradient.m in Sources */,
+				1B1B677C1B2AE22B007CD192 /* JobsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

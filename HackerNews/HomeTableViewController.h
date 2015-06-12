@@ -15,5 +15,7 @@
 }
 
 @property (nonatomic, strong) NSMutableArray* storiesArray;
+@property (nonatomic, strong) NSString* datasourceName;
+@property (nonatomic, strong) NSString* loadMsg;
 
 @end

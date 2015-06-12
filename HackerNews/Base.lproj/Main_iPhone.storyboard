@@ -147,13 +147,13 @@
         <!--Latest-->
         <scene sceneID="bVA-9A-u8W">
             <objects>
-                <tableViewController id="ilH-aJ-IVl" customClass="HomeTableViewController" sceneMemberID="viewController">
+                <tableViewController id="ilH-aJ-IVl" customClass="LatestTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Bjj-Jq-IaH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6t2-e5-QZ7">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="storyCell" id="6t2-e5-QZ7" customClass="StoryTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6t2-e5-QZ7" id="V83-aI-Ti7">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -165,8 +165,13 @@
                             <outlet property="delegate" destination="ilH-aJ-IVl" id="rWt-O0-gB8"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Latest" image="LatestIcon" id="EW0-wr-e4m"/>
-                    <navigationItem key="navigationItem" title="Latest" id="HiP-bm-1Eg"/>
+                    <tabBarItem key="tabBarItem" title="Latest" image="LatestIcon" id="EW0-wr-e4m">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.93914312124252319" green="0.39532530307769775" blue="0.17210668325424194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGt-La-vWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -175,7 +180,7 @@
         <!--Jobs-->
         <scene sceneID="RKe-wv-vyP">
             <objects>
-                <tableViewController id="Nrd-Um-nIO" customClass="HomeTableViewController" sceneMemberID="viewController">
+                <tableViewController id="Nrd-Um-nIO" customClass="JobsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Txw-xr-eUW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,8 +198,13 @@
                             <outlet property="delegate" destination="Nrd-Um-nIO" id="nKq-Nc-s6t"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Jobs" image="JobsIcon" id="Ysn-uQ-g1i"/>
-                    <navigationItem key="navigationItem" title="Jobs" id="a9U-7X-c96"/>
+                    <tabBarItem key="tabBarItem" title="Jobs" image="JobsIcon" id="Ysn-uQ-g1i">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.93914312124252319" green="0.39532530307769775" blue="0.17210668325424194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rW7-kr-Eee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,31 +243,31 @@
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="by morisy 3 hours ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I82-8h-YP7" userLabel="List Title">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="by morisy 3 hours ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I82-8h-YP7" userLabel="List Title">
                                             <rect key="frame" x="38" y="40" width="200" height="20"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                             <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Points" translatesAutoresizingMaskIntoConstraints="NO" id="yPo-lA-LFv">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" misplaced="YES" image="Points" translatesAutoresizingMaskIntoConstraints="NO" id="yPo-lA-LFv">
                                             <rect key="frame" x="38" y="67" width="13" height="17"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="37" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceo-DI-ydQ" userLabel="List Title">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="37" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceo-DI-ydQ" userLabel="List Title">
                                             <rect key="frame" x="55" y="65" width="40" height="19"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                             <color key="textColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Chats_3_" translatesAutoresizingMaskIntoConstraints="NO" id="EId-MI-gMY">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Chats_3_" translatesAutoresizingMaskIntoConstraints="NO" id="EId-MI-gMY">
                                             <rect key="frame" x="100" y="67" width="20" height="16"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ5-5U-XiH" userLabel="List Title">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ5-5U-XiH" userLabel="List Title">
                                             <rect key="frame" x="124" y="66" width="40" height="20"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                             <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="(github)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJL-U5-PEm">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(github)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJL-U5-PEm">
                                             <rect key="frame" x="178" y="65" width="122" height="21"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                             <color key="textColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
@@ -265,7 +275,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="EId-MI-gMY" firstAttribute="leading" secondItem="ceo-DI-ydQ" secondAttribute="trailing" constant="5" id="4th-fx-WZZ"/>
+                                        <constraint firstItem="EId-MI-gMY" firstAttribute="leading" secondItem="ceo-DI-ydQ" secondAttribute="trailing" constant="10" id="4th-fx-WZZ"/>
                                         <constraint firstItem="BQ5-5U-XiH" firstAttribute="leading" secondItem="EId-MI-gMY" secondAttribute="trailing" constant="4" id="5B8-MQ-1pV"/>
                                         <constraint firstItem="BQ5-5U-XiH" firstAttribute="top" secondItem="I82-8h-YP7" secondAttribute="bottom" constant="5" id="7bO-Ae-PEX"/>
                                         <constraint firstItem="yPo-lA-LFv" firstAttribute="top" secondItem="I82-8h-YP7" secondAttribute="bottom" constant="5" id="Ah0-Wx-Qfv"/>
@@ -280,6 +290,7 @@
                                         <constraint firstItem="X81-hW-Lnd" firstAttribute="top" secondItem="EGE-ES-Lis" secondAttribute="topMargin" id="oRe-u6-4JN"/>
                                         <constraint firstItem="ceo-DI-ydQ" firstAttribute="leading" secondItem="yPo-lA-LFv" secondAttribute="trailing" constant="4" id="rI7-9f-XlO"/>
                                         <constraint firstItem="I82-8h-YP7" firstAttribute="top" secondItem="4Bv-do-a9y" secondAttribute="bottom" constant="7" id="tzG-wa-7Wf"/>
+                                        <constraint firstItem="I82-8h-YP7" firstAttribute="leading" secondItem="EGE-ES-Lis" secondAttribute="leadingMargin" constant="30" id="xd5-Gz-Kdk"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="4Bv-do-a9y" secondAttribute="trailing" constant="2" id="ygZ-Ji-Woi"/>
                                         <constraint firstItem="aJL-U5-PEm" firstAttribute="leading" secondItem="BQ5-5U-XiH" secondAttribute="trailing" constant="2" id="zch-US-ep1"/>
                                     </constraints>
@@ -303,8 +314,14 @@
                             <outlet property="delegate" destination="0eC-IM-khP" id="B0b-rH-5XT"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Top Stories" image="TopStoriesIcon" id="pO0-68-RJJ"/>
-                    <navigationItem key="navigationItem" title="Top Stories" id="PVS-eM-nhv"/>
+                    <tabBarItem key="tabBarItem" title="Top Stories" image="TopStoriesIcon" id="pO0-68-RJJ">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.93914312124252319" green="0.39532530307769775" blue="0.17210668325424194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Top Stories" id="2z3-YY-CD6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLM-5g-Hiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -610,4 +627,5 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <color key="tintColor" red="0.91764705882352937" green="0.30196078431372547" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
 </document>

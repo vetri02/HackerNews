@@ -40,7 +40,7 @@
 - (void)getTopStories {
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://hacker-news.firebaseio.com/v0/"];
     //__block Firebase *itemRef = nil;
-    Firebase *topStories = [ref childByAppendingPath:@"topstories"];
+    Firebase *topStories = [ref childByAppendingPath:self.datasourceName];
     //Firebase *firstStory = [topStories childByAppendingPath:@"0"];
     //__block NSMutableArray *listStories = [[NSMutableArray alloc] init];
     // Attach a block to read the data at our posts reference
@@ -99,7 +99,7 @@
     
     NSString *urlString = [NSString stringWithFormat:@"https://hacker-news.firebaseio.com/v0/item/%@",itemNumber];
     
-    //NSLog(@"%@", itemNumber);
+    NSLog(@"%@", itemNumber);
     
     Firebase *storyDescriptionRef = [[Firebase alloc] initWithUrl:urlString];
     
@@ -109,11 +109,14 @@
         
         //NSDictionary *responseDictionary = snapshot.value;
         
-        //NSLog(@"%@", snapshot.value);
+        NSLog(@"%@", snapshot.value);
+        if(snapshot.value != [NSNull null]){
+            [self.storiesArray addObject:snapshot.value];
+            [self.tableView reloadData];
+        }
+
         
-        [self.storiesArray addObject:snapshot.value];
         
-        [self.tableView reloadData];
         
     } withCancelBlock:^(NSError *error) {
         
@@ -127,14 +130,25 @@
     // Initialize array that will store stories.
     self.storiesArray = [[NSMutableArray alloc] init];
     self.heights = [[NSMutableArray alloc] init];
+    self.datasourceName = @"topstories";
+    self.loadMsg = @"Fetching Top Stories";
     
-    [self.navigationController setTitle:@"Live"];
+    self.navigationItem.title = @"Title for NavigationBar";
+    
+    
+    UINib *celllNib = [UINib nibWithNibName:@"StoryTableCellView" bundle:nil] ;
+    [self.tableView registerNib:celllNib forCellReuseIdentifier:@"storyCell"];
     
     [self getTopStories];
     
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     //HUD.labelText = @"Fetching Stories";
-    HUD.detailsLabelText = @"Fetching Stories";
+    HUD.detailsLabelText = self.loadMsg;
+    HUD.mode = MBProgressHUDModeDeterminate;
+    
+    [HUD showWhileExecuting:@selector(doSomeFunkyStuff) onTarget:self withObject:nil animated:YES];
+    
+    //self.title = @"Top Stories";
 
     [self.view addSubview:HUD];
     [HUD show:YES];
@@ -145,6 +159,15 @@
     
 }
 
+- (void)doSomeFunkyStuff {
+    float progress = 0.0;
+    
+    while (progress < 1.0) {
+        progress += 0.005;
+        HUD.progress = progress;
+        usleep(50000);
+    }
+}
 
 
 
@@ -171,12 +194,17 @@
 //    static NSString *CellIdentifier = @"storyCell";
 //    StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 //    
-//    if (cell==nil) {
-//        cell = [[StoryTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-//        
-//    }
+
     
     StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"storyCell" forIndexPath:indexPath];
+    
+        if (cell==nil) {
+            
+            NSArray* storyObject = [[NSBundle mainBundle] loadNibNamed:@"CurrentOffersInfoView" owner:self options:nil];
+            
+            cell = [storyObject firstObject];
+        }
+    
     
     
     
@@ -196,10 +224,14 @@
     //NSLog (@"Number of elements in array = %lu", [commentArray count]);
     
     //Get the HostName
+
     NSURL* url = [NSURL URLWithString:[story valueForKey:@"url"]];
     NSString* reducedUrl = [NSString stringWithFormat:
                             @"%@",url.host];
-    NSLog(@"Output is: \"%@\"", reducedUrl);
+    //NSLog(@"Output is: \"%@\"", reducedUrl);
+    if([story valueForKey:@"deleted"]){
+    } else {
+        
     
     // Apply the data to each row
     cell.titleLabel.text = [story valueForKey:@"title"];
@@ -214,9 +246,10 @@
     cell.titleLabel.numberOfLines = 0;
     [cell.titleLabel sizeToFit];
     
+    }
     [HUD hide:YES];
     
-    
+    //NSLog(@"Output is: \"%@\"", cell.titleLabel);
     
     return cell;
 }
@@ -244,9 +277,37 @@
     
         //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
     
-    return (rect.size.height < 44 ? 95 : 110);
+    return (rect.size.height < 44 ? 90 : 110);
     //return 95;
 }
+
+//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    
+//    //1. Setup the CATransform3D structure
+//    CATransform3D rotation;
+//    rotation = CATransform3DMakeRotation( (90.0*M_PI)/180, 0.0, 0.7, 0.4);
+//    rotation.m34 = 1.0/ -600;
+//    
+//    
+//    //2. Define the initial state (Before the animation)
+//    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
+//    cell.layer.shadowOffset = CGSizeMake(10, 10);
+//    cell.alpha = 0;
+//    
+//    cell.layer.transform = rotation;
+//    cell.layer.anchorPoint = CGPointMake(0, 0.5);
+//    
+//    
+//    //3. Define the final state (After the animation) and commit the animation
+//    [UIView beginAnimations:@"rotation" context:NULL];
+//    [UIView setAnimationDuration:0.8];
+//    cell.layer.transform = CATransform3DIdentity;
+//    cell.alpha = 1;
+//    cell.layer.shadowOffset = CGSizeMake(0, 0);
+//    [UIView commitAnimations];
+//    
+//}
 
 
 @end
