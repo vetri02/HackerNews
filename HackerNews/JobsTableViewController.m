@@ -29,6 +29,11 @@
     return @"Fetching Jobs";
 }
 
+- (NSString *)navTitle {
+    
+    return @"Jobs";
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

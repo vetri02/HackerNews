@@ -21,6 +21,8 @@
     //self.datasourceName = @"newstories";
     HUD.detailsLabelText = @"Fetching Latest Stories";
     
+        //self.navigationController.navigationBar.topItem.title = @"Latest Stories";
+    
     [super viewDidLoad];
     
     
@@ -36,6 +38,12 @@
 - (NSString *)loadMsg {
     
     return @"Fetching Latest";
+}
+
+
+- (NSString *)navTitle {
+    
+    return @"Latest Stories";
 }
 
 - (void)didReceiveMemoryWarning {

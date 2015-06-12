@@ -132,8 +132,12 @@
     self.heights = [[NSMutableArray alloc] init];
     self.datasourceName = @"topstories";
     self.loadMsg = @"Fetching Top Stories";
+    self.navTitle = @"Top Stories";
     
-    self.navigationItem.title = @"Title for NavigationBar";
+    
+
+    self.navigationController.navigationBar.topItem.title = self.navTitle;
+    
     
     
     UINib *celllNib = [UINib nibWithNibName:@"StoryTableCellView" bundle:nil] ;
@@ -157,6 +161,11 @@
     self.tableView.scrollsToTop = YES;
     
     
+}
+
+-(void) viewWillAppear {
+    self.navTitle = @"Top Stories";
+    self.navigationController.navigationBar.topItem.title = self.navTitle;
 }
 
 - (void)doSomeFunkyStuff {
