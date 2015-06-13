@@ -1,50 +1,32 @@
 //
-//  LatestTableViewController.m
+//  WebViewController.m
 //  HackerNews
 //
-//  Created by Vetrichelvan on 12/06/15.
+//  Created by Vetrichelvan on 13/06/15.
 //  Copyright (c) 2015 Vetrichelvan. All rights reserved.
 //
 
-#import "LatestTableViewController.h"
-#import "MBProgressHUD.h"
+#import "WebViewController.h"
 
-@interface LatestTableViewController ()
+@interface WebViewController ()
 
 @end
 
-@implementation LatestTableViewController
+@implementation WebViewController
 
 - (void)viewDidLoad {
-    
-    
-    //self.datasourceName = @"newstories";
-    HUD.detailsLabelText = @"Fetching Latest Stories";
-    
-        //self.navigationController.navigationBar.topItem.title = @"Latest Stories";
-    
     [super viewDidLoad];
-    
-    
-
     // Do any additional setup after loading the view.
-}
-
-
-- (NSString *)datasourceName {
     
-    return @"newstories";
-}
-
-- (NSString *)loadMsg {
+    // Load web page
+    //NSString *fullURL = @"http://designcode.io";
+    NSURL *url = [NSURL URLWithString:[self.story valueForKey:@"url"]];
+    NSURLRequest *requestObject = [NSURLRequest requestWithURL:url];
+    [self.viewWeb loadRequest:requestObject];
     
-    return @"Fetching Latest";
-}
-
-
-- (NSString *)navTitle {
+    self.title = [self.story valueForKey:@"title"];
+    [self.navigationItem.backBarButtonItem setTitle:@" "];
     
-    return @"Latest Stories";
 }
 
 - (void)didReceiveMemoryWarning {

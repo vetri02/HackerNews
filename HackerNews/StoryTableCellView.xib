@@ -22,7 +22,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="File system that stores location of file in Pi" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yU-CX-r8t" userLabel="List Title">
-                        <rect key="frame" x="38" y="11" width="239" height="22"/>
+                        <rect key="frame" x="38" y="10" width="239" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="0VW-fC-gu6"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="3fT-5h-nyx"/>

@@ -1,51 +1,31 @@
 //
-//  LatestTableViewController.m
+//  HNTabController.m
 //  HackerNews
 //
 //  Created by Vetrichelvan on 12/06/15.
 //  Copyright (c) 2015 Vetrichelvan. All rights reserved.
 //
 
-#import "LatestTableViewController.h"
-#import "MBProgressHUD.h"
+#import "HNTabController.h"
 
-@interface LatestTableViewController ()
+@interface HNTabController () <UITabBarControllerDelegate>
 
 @end
 
-@implementation LatestTableViewController
+@implementation HNTabController
 
 - (void)viewDidLoad {
-    
-    
-    //self.datasourceName = @"newstories";
-    HUD.detailsLabelText = @"Fetching Latest Stories";
-    
-        //self.navigationController.navigationBar.topItem.title = @"Latest Stories";
-    
     [super viewDidLoad];
-    
-    
-
     // Do any additional setup after loading the view.
-}
-
-
-- (NSString *)datasourceName {
     
-    return @"newstories";
+//    self.delegate = self;
 }
 
-- (NSString *)loadMsg {
-    
-    return @"Fetching Latest";
-}
-
-
-- (NSString *)navTitle {
-    
-    return @"Latest Stories";
-}
+//- (void)tabBarController:(UITabBarController *)tabBarController
+// didSelectViewController:(UIViewController *)viewController {
+////    NSLog(@"Output is: \"%@\"", viewController.title);
+////    self.title = viewController.title;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

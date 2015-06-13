@@ -121,12 +121,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3653" y="-575"/>
+            <point key="canvasLocation" x="3683" y="-575"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Controller-->
         <scene sceneID="Tkf-tT-QYE">
             <objects>
-                <tabBarController id="HS6-QD-AbG" sceneMemberID="viewController">
+                <tabBarController id="HS6-QD-AbG" customClass="HNTabController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="31X-Bp-ONx"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="igw-kf-c3V">
@@ -304,7 +304,6 @@
                                     <outlet property="sourceLabel" destination="aJL-U5-PEm" id="XEI-ht-MIB"/>
                                     <outlet property="titleLabel" destination="4Bv-do-a9y" id="eJM-ZT-i92"/>
                                     <outlet property="typeImageView" destination="X81-hW-Lnd" id="EHc-OB-rd7"/>
-                                    <segue destination="fnA-Bg-GpQ" kind="push" id="Me6-Mk-1YF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -322,6 +321,9 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Top Stories" id="2z3-YY-CD6"/>
+                    <connections>
+                        <segue destination="ZjH-Uf-knr" kind="push" identifier="toWebView" id="MQs-EZ-GAP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLM-5g-Hiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -393,9 +395,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="ZjH-Uf-knr" kind="push" id="8kw-TK-xOg"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" rowHeight="150" id="fFV-3l-gFW">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -473,12 +472,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lu-TX-1fa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3653" y="143"/>
+            <point key="canvasLocation" x="4165" y="143"/>
         </scene>
         <!--New WebView-->
         <scene sceneID="rva-TN-psu">
             <objects>
-                <viewController id="ZjH-Uf-knr" userLabel="New WebView" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="ZjH-Uf-knr" userLabel="New WebView" customClass="WebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nav-vE-03r"/>
                         <viewControllerLayoutGuide type="bottom" id="SXX-Ir-wgT"/>
@@ -494,14 +493,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="File system that stores location of file in Pi" id="Xcg-BS-8JR"/>
+                    <navigationItem key="navigationItem" title="File system that stores location of file in Pi" id="Xcg-BS-8JR">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="hDf-yM-E4a">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1ss-DF-Rug">
+                                <rect key="frame" x="116" y="234" width="87" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <state key="normal" title="Comments">
+                                    <color key="titleColor" red="0.99991267919540405" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.99991267919540405" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fnA-Bg-GpQ" kind="push" id="fCW-3e-OmX"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="viewWeb" destination="hTf-jy-juh" id="wqf-eP-4Er"/>
+                        <outlet property="viewWeb" destination="hTf-jy-juh" id="Sa8-FD-uKO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RB2-OL-R7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4106" y="144"/>
+            <point key="canvasLocation" x="3683" y="143"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="WKx-L2-mW4">
@@ -605,6 +619,13 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="672-pt-bgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cLb-Wi-DXJ">
+                    <rect key="frame" x="0.0" y="0.0" width="87" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </objects>
             <point key="canvasLocation" x="2320" y="144"/>
         </scene>

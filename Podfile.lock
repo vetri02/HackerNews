@@ -2,24 +2,28 @@ PODS:
   - Canvas (0.1.2)
   - Firebase (2.2.2)
   - MBProgressHUD (0.9.1)
+  - NJKWebViewProgress (0.2.3):
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
   - NSDate+TimeAgo (1.0.3)
-  - PureLayout (2.0.6)
   - TPKeyboardAvoiding (1.2.6)
 
 DEPENDENCIES:
   - Canvas
   - Firebase (>= 2.2.0)
   - MBProgressHUD (~> 0.9.1)
+  - NJKWebViewProgress
   - NSDate+TimeAgo (~> 1.0.2)
-  - PureLayout
   - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
   Firebase: e35cdd2561bf4fea9c1e384e9400a9c173d19e47
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
-  PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
   TPKeyboardAvoiding: ee4dd35e3bb7bb64bfbda47e7cc9ba872ff10f77
 
 COCOAPODS: 0.35.0

@@ -11,7 +11,7 @@
 #import "StoryTableViewCell.h"
 #import "MBProgressHUD.h"
 #import "NSDate+TimeAgo.h"
-#import <PureLayout/PureLayout.h>
+#import "WebViewController.h"
 
 
 
@@ -166,6 +166,7 @@
 -(void) viewWillAppear {
     self.navTitle = @"Top Stories";
     self.navigationController.navigationBar.topItem.title = self.navTitle;
+    self.title = self.navTitle;
 }
 
 - (void)doSomeFunkyStuff {
@@ -288,6 +289,26 @@
     
     return (rect.size.height < 44 ? 90 : 110);
     //return 95;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
+    //NSString *fullURL = [story valueForKey:@"url"];
+    //if(indexPath.row == 0) {
+        [self performSegueWithIdentifier:@"toWebView" sender:story];
+    //}
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"toWebView"])
+    {
+        //if you need to pass data to the next controller do it here
+        WebViewController *controller = segue.destinationViewController;
+        controller.story = sender;
+    }
 }
 
 //-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
