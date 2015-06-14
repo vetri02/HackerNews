@@ -15,6 +15,14 @@
 
 @implementation LatestTableViewController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    self.datasourceName = @"newstories";
+    self.loadMsg = @"Fetching Latest";
+    self.navTitle = @"Latest Stories";
+    return self;
+}
+
 - (void)viewDidLoad {
     
     
@@ -28,23 +36,6 @@
     
 
     // Do any additional setup after loading the view.
-}
-
-
-- (NSString *)datasourceName {
-    
-    return @"newstories";
-}
-
-- (NSString *)loadMsg {
-    
-    return @"Fetching Latest";
-}
-
-
-- (NSString *)navTitle {
-    
-    return @"Latest Stories";
 }
 
 - (void)didReceiveMemoryWarning {

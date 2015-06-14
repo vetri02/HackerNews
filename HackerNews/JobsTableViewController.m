@@ -14,24 +14,17 @@
 
 @implementation JobsTableViewController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    self.datasourceName = @"jobstories";
+    self.loadMsg = @"Fetching Jobs";
+    self.navTitle = @"Jobs";
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
-
-- (NSString *)datasourceName {
-    
-    return @"jobstories";
-}
-
-- (NSString *)loadMsg {
-    
-    return @"Fetching Jobs";
-}
-
-- (NSString *)navTitle {
-    
-    return @"Jobs";
 }
 
 - (void)didReceiveMemoryWarning {
