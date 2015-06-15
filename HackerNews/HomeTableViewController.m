@@ -155,11 +155,9 @@
         cell.typeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [story valueForKeyPath:@"type"]]];
         
         cell.accessoryType = UITableViewCellAccessoryNone;
-        
-        cell.titleLabel.numberOfLines = 0;
-        [cell.titleLabel sizeToFit];
     }
-    [HUD hide:YES];
+    
+    [cell layoutIfNeeded];
     
     return cell;
 }
@@ -167,6 +165,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
         [self performSegueWithIdentifier:@"toWebView" sender:story];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 94;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

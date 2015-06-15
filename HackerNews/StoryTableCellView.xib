@@ -45,11 +45,11 @@
                             <constraint firstAttribute="width" constant="13" id="Sfl-Aj-Xb6"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="37" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq8-2u-aHN" userLabel="List Title">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="37" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq8-2u-aHN" userLabel="List Title">
                         <rect key="frame" x="55" y="86" width="16" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="HF7-Xr-SyQ"/>
-                            <constraint firstAttribute="width" constant="16" id="Q7K-sq-blL"/>
+                            <constraint firstAttribute="width" priority="250" constant="16" id="Q7K-sq-blL"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                         <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
