@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Gradient.h"
+//#import "Gradient.h"
 
 @interface ViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIWebView *viewWeb;

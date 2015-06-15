@@ -8,6 +8,7 @@
 
 #import "LatestTableViewController.h"
 #import "MBProgressHUD.h"
+#import "WebViewController.h"
 
 @interface LatestTableViewController ()
 
@@ -45,6 +46,26 @@
 - (NSString *)navTitle {
     
     return @"Latest Stories";
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
+    //NSString *fullURL = [story valueForKey:@"url"];
+    //if(indexPath.row == 0) {
+    [self performSegueWithIdentifier:@"latesttoWebView" sender:story];
+    //}
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"latesttoWebView"])
+    {
+        //if you need to pass data to the next controller do it here
+        WebViewController *controller = segue.destinationViewController;
+        controller.story = sender;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

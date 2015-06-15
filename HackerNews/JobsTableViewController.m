@@ -7,6 +7,7 @@
 //
 
 #import "JobsTableViewController.h"
+#import "WebViewController.h"
 
 @interface JobsTableViewController ()
 
@@ -32,6 +33,26 @@
 - (NSString *)navTitle {
     
     return @"Jobs";
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
+    //NSString *fullURL = [story valueForKey:@"url"];
+    //if(indexPath.row == 0) {
+    [self performSegueWithIdentifier:@"jobstoWebView" sender:story];
+    //}
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"jobstoWebView"])
+    {
+        //if you need to pass data to the next controller do it here
+        WebViewController *controller = segue.destinationViewController;
+        controller.story = sender;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

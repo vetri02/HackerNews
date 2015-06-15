@@ -22,6 +22,7 @@
 @property NSMutableArray *storyEventRefs;
 @property NSMutableArray *dataArr;
 @property NSMutableArray *heights;
+@property (nonatomic, assign) NSInteger counter;
 @property (nonatomic, strong) StoryTableViewCell *prototypeCell;
 
 
@@ -44,6 +45,7 @@
     //Firebase *firstStory = [topStories childByAppendingPath:@"0"];
     //__block NSMutableArray *listStories = [[NSMutableArray alloc] init];
     // Attach a block to read the data at our posts reference
+    self.counter = 0;
     [topStories observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
         //NSLog(@"%@", snapshot.value);
@@ -99,7 +101,7 @@
     
     NSString *urlString = [NSString stringWithFormat:@"https://hacker-news.firebaseio.com/v0/item/%@",itemNumber];
     
-    NSLog(@"%@", itemNumber);
+//    NSLog(@"%@", itemNumber);
     
     Firebase *storyDescriptionRef = [[Firebase alloc] initWithUrl:urlString];
     
@@ -111,12 +113,21 @@
         
         NSLog(@"%@", snapshot.value);
         if(snapshot.value != [NSNull null]){
+            [self.tableView beginUpdates];
             [self.storiesArray addObject:snapshot.value];
-            [self.tableView reloadData];
+            NSInteger row = self.storiesArray.count - 1;
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView endUpdates];
+//            [self.tableView reloadData];
         }
 
-        
-        
+        self.counter++;
+        HUD.progress = (float)self.counter / self.temporaryTop500StoriesIds.count;
+        if (self.counter == self.temporaryTop500StoriesIds.count) {
+            [HUD hide:YES];
+        }
+    
         
     } withCancelBlock:^(NSError *error) {
         
@@ -149,8 +160,8 @@
     //HUD.labelText = @"Fetching Stories";
     HUD.detailsLabelText = self.loadMsg;
     HUD.mode = MBProgressHUDModeDeterminate;
-    
-    [HUD showWhileExecuting:@selector(doSomeFunkyStuff) onTarget:self withObject:nil animated:YES];
+
+//    [HUD showWhileExecuting:@selector(doSomeFunkyStuff) onTarget:self withObject:nil animated:YES];
     
     //self.title = @"Top Stories";
 
@@ -158,8 +169,10 @@
     [HUD show:YES];
     
     
-    self.tableView.scrollsToTop = YES;
     
+    self.tableView.scrollsToTop = YES;
+    self.tableView.estimatedRowHeight = 100.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
 }
 
@@ -234,7 +247,7 @@
     //NSLog (@"Number of elements in array = %lu", [commentArray count]);
     
     //Get the HostName
-
+    NSString *urlString = [story valueForKey:@"url"];
     NSURL* url = [NSURL URLWithString:[story valueForKey:@"url"]];
     NSString* reducedUrl = [NSString stringWithFormat:
                             @"%@",url.host];
@@ -248,7 +261,7 @@
     cell.authorWithTimeLabel.text = [NSString stringWithFormat:@"by %@, %@", [story valueForKey:@"by"], ago];
     cell.commentLabel.text = [NSString stringWithFormat:@"%@", commentCountText];
     cell.scoreLabel.text = [NSString stringWithFormat:@"%@", [story valueForKey:@"score"]];
-    cell.sourceLabel.text = [NSString stringWithFormat:@"%@", reducedUrl];
+    cell.sourceLabel.text = urlString.length > 0 ? reducedUrl : @"";
     cell.typeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [story valueForKeyPath:@"type"]]];
     
     cell.accessoryType = UITableViewCellAccessoryNone;
@@ -257,7 +270,9 @@
     [cell.titleLabel sizeToFit];
     
     }
-    [HUD hide:YES];
+    //[HUD hide:YES];
+    [cell layoutIfNeeded];
+    [cell setNeedsLayout];
     
     //NSLog(@"Output is: \"%@\"", cell.titleLabel);
     
@@ -265,45 +280,45 @@
 }
 
 
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-   
-    NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
-    NSString* text = [story valueForKey:@"title"];
-    NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:text attributes:
-                                                                                               @{ NSFontAttributeName: [UIFont systemFontOfSize:16]}];
-    
-        //its not possible to get the cell label width since this method is called before cellForRow so best we can do
-        //is get the table width and subtract the default extra space on either side of the label.
-    CGSize constraintSize = CGSizeMake(300 - 30, MAXFLOAT);
-    
-    CGRect rect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
-    
-        //NSLog(@"Output is: \"%d\"", rect.size.height);
-    
-        //Add back in the extra padding above and below label on table cell.
-        rect.size.height = rect.size.height + 23;
-    
-        //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
-    
-    return (rect.size.height < 44 ? 90 : 110);
-    //return 95;
-}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//   
+//    NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
+//    NSString* text = [story valueForKey:@"title"];
+//    NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:text attributes:
+//                                                                                               @{ NSFontAttributeName: [UIFont systemFontOfSize:16]}];
+//    
+//        //its not possible to get the cell label width since this method is called before cellForRow so best we can do
+//        //is get the table width and subtract the default extra space on either side of the label.
+//    CGSize constraintSize = CGSizeMake(300 - 30, MAXFLOAT);
+//    
+//    CGRect rect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
+//    
+//        //NSLog(@"Output is: \"%d\"", rect.size.height);
+//    
+//        //Add back in the extra padding above and below label on table cell.
+//        rect.size.height = rect.size.height + 23;
+//    
+//        //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
+//    
+//    return (rect.size.height < 44 ? 95 : 115);
+//    //return 95;
+//}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
     //NSString *fullURL = [story valueForKey:@"url"];
     //if(indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"toWebView" sender:story];
+        [self performSegueWithIdentifier:@"topStoriestoWebView" sender:story];
     //}
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure your segue name in storyboard is the same as this line
-    if ([[segue identifier] isEqualToString:@"toWebView"])
+    if ([[segue identifier] isEqualToString:@"topStoriestoWebView"])
     {
         //if you need to pass data to the next controller do it here
         WebViewController *controller = segue.destinationViewController;
