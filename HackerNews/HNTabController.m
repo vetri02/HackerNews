@@ -19,6 +19,8 @@
     // Do any additional setup after loading the view.
     
 //    self.delegate = self;
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Avenir" size:11.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
+
 }
 
 //- (void)tabBarController:(UITabBarController *)tabBarController

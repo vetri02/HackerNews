@@ -27,6 +27,7 @@
 		1B37178D198E27F600FF0B04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B37176C198E27F600FF0B04 /* UIKit.framework */; };
 		1B371795198E27F600FF0B04 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B371793198E27F600FF0B04 /* InfoPlist.strings */; };
 		1B371797198E27F600FF0B04 /* HackerNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B371796198E27F600FF0B04 /* HackerNewsTests.m */; };
+		1B63FEEC1B2EF7E4004DD76C /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B63FEEB1B2EF7E4004DD76C /* CommentsTableViewController.m */; };
 		1B6882651B0B7BE700235DF2 /* StoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */; };
 		1B68826E1B0C7C9E00235DF2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B68826C1B0C7C9E00235DF2 /* Fabric.framework */; };
 		1B68826F1B0C7C9E00235DF2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B68826D1B0C7C9E00235DF2 /* Crashlytics.framework */; };
@@ -78,6 +79,8 @@
 		1B371792198E27F600FF0B04 /* HackerNewsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackerNewsTests-Info.plist"; sourceTree = "<group>"; };
 		1B371794198E27F600FF0B04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1B371796198E27F600FF0B04 /* HackerNewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackerNewsTests.m; sourceTree = "<group>"; };
+		1B63FEEA1B2EF7E4004DD76C /* CommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewController.h; sourceTree = "<group>"; };
+		1B63FEEB1B2EF7E4004DD76C /* CommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewController.m; sourceTree = "<group>"; };
 		1B6882631B0B7BE700235DF2 /* StoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryTableViewCell.h; sourceTree = "<group>"; };
 		1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryTableViewCell.m; sourceTree = "<group>"; };
 		1B68826C1B0C7C9E00235DF2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 				1B906AE71A94AEC000AAF25D /* HomeTableViewController.m */,
 				1BE93C831B2C128F00E79497 /* WebViewController.h */,
 				1BE93C841B2C128F00E79497 /* WebViewController.m */,
+				1B63FEEA1B2EF7E4004DD76C /* CommentsTableViewController.h */,
+				1B63FEEB1B2EF7E4004DD76C /* CommentsTableViewController.m */,
 				1B1B677D1B2B2F04007CD192 /* HNTabController.h */,
 				1B1B677E1B2B2F04007CD192 /* HNTabController.m */,
 				1B1B67771B2AD319007CD192 /* LatestTableViewController.h */,
@@ -377,6 +382,7 @@
 				1B371782198E27F600FF0B04 /* ViewController.m in Sources */,
 				1B1FBEB919D70D8E0021FC10 /* CustomButton.m in Sources */,
 				1B371779198E27F600FF0B04 /* AppDelegate.m in Sources */,
+				1B63FEEC1B2EF7E4004DD76C /* CommentsTableViewController.m in Sources */,
 				1B1B677F1B2B2F04007CD192 /* HNTabController.m in Sources */,
 				1B6882651B0B7BE700235DF2 /* StoryTableViewCell.m in Sources */,
 				1B371775198E27F600FF0B04 /* main.m in Sources */,
