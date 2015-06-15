@@ -18,22 +18,25 @@
 
 @interface HomeTableViewController ()
 
-@property NSMutableArray *temporaryTop500StoriesIds;
-@property NSMutableArray *storyEventRefs;
-@property NSMutableArray *dataArr;
-@property NSMutableArray *heights;
+@property (nonatomic, strong) NSMutableArray *temporaryTop500StoriesIds;
+@property (nonatomic, strong) NSMutableArray *storyEventRefs;
+@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSMutableArray *heights;
 @property (nonatomic, assign) NSInteger counter;
 @property (nonatomic, strong) StoryTableViewCell *prototypeCell;
 
-
-
-
-
 @end
+
 
 @implementation HomeTableViewController
 
-
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    self.datasourceName = @"topstories";
+    self.loadMsg = @"Fetching Top Stories";
+    self.navTitle = @"Top Stories";
+    return self;
+}
 
 
 #pragma mark - FireBase API
@@ -56,18 +59,18 @@
         
         
         
-
-//        NSArray *tempArray = [self.dataArr subarrayWithRange:NSMakeRange(0, 10)];
-//        
-//        [self.temporaryTop100StoriesIds addObjectsFromArray:tempArray];
         
-
+        //        NSArray *tempArray = [self.dataArr subarrayWithRange:NSMakeRange(0, 10)];
+        //
+        //        [self.temporaryTop100StoriesIds addObjectsFromArray:tempArray];
+        
+        
         
         self.temporaryTop500StoriesIds = [snapshot.value mutableCopy];
         
-//        NSArray *uniques = Underscore.uniq(self.temporaryTop100StoriesIds);
-//        
-//        NSLog (@"Number of elements in array = %d", [uniques count]);
+        //        NSArray *uniques = Underscore.uniq(self.temporaryTop100StoriesIds);
+        //
+        //        NSLog (@"Number of elements in array = %d", [uniques count]);
         
         
         [self getStoryDescriptionsUsingNewIDs:YES];
@@ -75,7 +78,7 @@
     } withCancelBlock:^(NSError *error) {
         NSLog(@"%@", error.description);
     }];
-
+    
 }
 
 - (void)getStoryDescriptionsUsingNewIDs:(BOOL)usingNewIDs{
@@ -86,11 +89,11 @@
         }
     }
     else{
-//        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastRefreshDate"];
-//        
-//        for(NSNumber *itemNumber in self.top100StoriesIds){
-//            [self getStoryDataOfItem:itemNumber usingNewIDs:usingNewIDs];
-//        }
+        //        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastRefreshDate"];
+        //
+        //        for(NSNumber *itemNumber in self.top100StoriesIds){
+        //            [self getStoryDataOfItem:itemNumber usingNewIDs:usingNewIDs];
+        //        }
     }
     
 }
@@ -101,7 +104,7 @@
     
     NSString *urlString = [NSString stringWithFormat:@"https://hacker-news.firebaseio.com/v0/item/%@",itemNumber];
     
-//    NSLog(@"%@", itemNumber);
+    //    NSLog(@"%@", itemNumber);
     
     Firebase *storyDescriptionRef = [[Firebase alloc] initWithUrl:urlString];
     
@@ -111,7 +114,7 @@
         
         //NSDictionary *responseDictionary = snapshot.value;
         
-        NSLog(@"%@", snapshot.value);
+        //        NSLog(@"%@", snapshot.value);
         if(snapshot.value != [NSNull null]){
             [self.tableView beginUpdates];
             [self.storiesArray addObject:snapshot.value];
@@ -119,15 +122,15 @@
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
             [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             [self.tableView endUpdates];
-//            [self.tableView reloadData];
+            //            [self.tableView reloadData];
         }
-
+        
         self.counter++;
         HUD.progress = (float)self.counter / self.temporaryTop500StoriesIds.count;
         if (self.counter == self.temporaryTop500StoriesIds.count) {
             [HUD hide:YES];
         }
-    
+        
         
     } withCancelBlock:^(NSError *error) {
         
@@ -141,12 +144,7 @@
     // Initialize array that will store stories.
     self.storiesArray = [[NSMutableArray alloc] init];
     self.heights = [[NSMutableArray alloc] init];
-    self.datasourceName = @"topstories";
-    self.loadMsg = @"Fetching Top Stories";
-    self.navTitle = @"Top Stories";
     
-    
-
     self.navigationController.navigationBar.topItem.title = self.navTitle;
     
     
@@ -160,11 +158,11 @@
     //HUD.labelText = @"Fetching Stories";
     HUD.detailsLabelText = self.loadMsg;
     HUD.mode = MBProgressHUDModeDeterminate;
-
-//    [HUD showWhileExecuting:@selector(doSomeFunkyStuff) onTarget:self withObject:nil animated:YES];
+    
+    //    [HUD showWhileExecuting:@selector(doSomeFunkyStuff) onTarget:self withObject:nil animated:YES];
     
     //self.title = @"Top Stories";
-
+    
     [self.view addSubview:HUD];
     [HUD show:YES];
     
@@ -176,8 +174,8 @@
     
 }
 
--(void) viewWillAppear {
-    self.navTitle = @"Top Stories";
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = self.navTitle;
     self.title = self.navTitle;
 }
@@ -204,7 +202,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-   
+    
     //NSLog(@"%@", snapshot.value);
     return [self.storiesArray count];
 }
@@ -214,19 +212,19 @@
 
 {
     
-//    static NSString *CellIdentifier = @"storyCell";
-//    StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    
-
+    //    static NSString *CellIdentifier = @"storyCell";
+    //    StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //
+    
     
     StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"storyCell" forIndexPath:indexPath];
     
-        if (cell==nil) {
-            
-            NSArray* storyObject = [[NSBundle mainBundle] loadNibNamed:@"CurrentOffersInfoView" owner:self options:nil];
-            
-            cell = [storyObject firstObject];
-        }
+    if (cell==nil) {
+        
+        NSArray* storyObject = [[NSBundle mainBundle] loadNibNamed:@"CurrentOffersInfoView" owner:self options:nil];
+        
+        cell = [storyObject firstObject];
+    }
     
     
     
@@ -255,20 +253,20 @@
     if([story valueForKey:@"deleted"]){
     } else {
         
-    
-    // Apply the data to each row
-    cell.titleLabel.text = [story valueForKey:@"title"];
-    cell.authorWithTimeLabel.text = [NSString stringWithFormat:@"by %@, %@", [story valueForKey:@"by"], ago];
-    cell.commentLabel.text = [NSString stringWithFormat:@"%@", commentCountText];
-    cell.scoreLabel.text = [NSString stringWithFormat:@"%@", [story valueForKey:@"score"]];
-    cell.sourceLabel.text = urlString.length > 0 ? reducedUrl : @"";
-    cell.typeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [story valueForKeyPath:@"type"]]];
-    
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    cell.titleLabel.numberOfLines = 0;
-    [cell.titleLabel sizeToFit];
-    
+        
+        // Apply the data to each row
+        cell.titleLabel.text = [story valueForKey:@"title"];
+        cell.authorWithTimeLabel.text = [NSString stringWithFormat:@"by %@, %@", [story valueForKey:@"by"], ago];
+        cell.commentLabel.text = [NSString stringWithFormat:@"%@", commentCountText];
+        cell.scoreLabel.text = [NSString stringWithFormat:@"%@", [story valueForKey:@"score"]];
+        cell.sourceLabel.text = urlString.length > 0 ? reducedUrl : @"";
+        cell.typeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [story valueForKeyPath:@"type"]]];
+        
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        cell.titleLabel.numberOfLines = 0;
+        [cell.titleLabel sizeToFit];
+        
     }
     //[HUD hide:YES];
     [cell layoutIfNeeded];
@@ -283,25 +281,25 @@
 //
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
-//   
+//
 //    NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
 //    NSString* text = [story valueForKey:@"title"];
 //    NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:text attributes:
 //                                                                                               @{ NSFontAttributeName: [UIFont systemFontOfSize:16]}];
-//    
+//
 //        //its not possible to get the cell label width since this method is called before cellForRow so best we can do
 //        //is get the table width and subtract the default extra space on either side of the label.
 //    CGSize constraintSize = CGSizeMake(300 - 30, MAXFLOAT);
-//    
+//
 //    CGRect rect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
-//    
+//
 //        //NSLog(@"Output is: \"%d\"", rect.size.height);
-//    
+//
 //        //Add back in the extra padding above and below label on table cell.
 //        rect.size.height = rect.size.height + 23;
-//    
+//
 //        //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
-//    
+//
 //    return (rect.size.height < 44 ? 95 : 115);
 //    //return 95;
 //}
@@ -311,7 +309,7 @@
     NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
     //NSString *fullURL = [story valueForKey:@"url"];
     //if(indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"topStoriestoWebView" sender:story];
+    [self performSegueWithIdentifier:@"topStoriestoWebView" sender:story];
     //}
 }
 
@@ -327,23 +325,23 @@
 }
 
 //-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    
+//
+//
 //    //1. Setup the CATransform3D structure
 //    CATransform3D rotation;
 //    rotation = CATransform3DMakeRotation( (90.0*M_PI)/180, 0.0, 0.7, 0.4);
 //    rotation.m34 = 1.0/ -600;
-//    
-//    
+//
+//
 //    //2. Define the initial state (Before the animation)
 //    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
 //    cell.layer.shadowOffset = CGSizeMake(10, 10);
 //    cell.alpha = 0;
-//    
+//
 //    cell.layer.transform = rotation;
 //    cell.layer.anchorPoint = CGPointMake(0, 0.5);
-//    
-//    
+//
+//
 //    //3. Define the final state (After the animation) and commit the animation
 //    [UIView beginAnimations:@"rotation" context:NULL];
 //    [UIView setAnimationDuration:0.8];
