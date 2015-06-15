@@ -20,8 +20,6 @@
 
 @property (nonatomic, strong) NSMutableArray *temporaryTop500StoriesIds;
 @property (nonatomic, strong) NSMutableArray *storyEventRefs;
-@property (nonatomic, strong) NSMutableArray *dataArr;
-@property (nonatomic, strong) NSMutableArray *heights;
 @property (nonatomic, strong) StoryTableViewCell *prototypeCell;
 
 @end
@@ -42,37 +40,16 @@
 
 - (void)getTopStories {
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://hacker-news.firebaseio.com/v0/"];
-    //__block Firebase *itemRef = nil;
     Firebase *topStories = [ref childByAppendingPath:self.datasourceName];
-    //Firebase *firstStory = [topStories childByAppendingPath:@"0"];
-    //__block NSMutableArray *listStories = [[NSMutableArray alloc] init];
+
     // Attach a block to read the data at our posts reference
     [topStories observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
         //NSLog(@"%@", snapshot.value);
-        self.dataArr = [snapshot.value mutableCopy];
-        
-        
-        //NSLog (@"Number of elements in array = %d", [self.dataArr count]);
-        
-        
-        
-
-//        NSArray *tempArray = [self.dataArr subarrayWithRange:NSMakeRange(0, 10)];
-//        
-//        [self.temporaryTop100StoriesIds addObjectsFromArray:tempArray];
-        
-
         
         self.temporaryTop500StoriesIds = [snapshot.value mutableCopy];
         
-//        NSArray *uniques = Underscore.uniq(self.temporaryTop100StoriesIds);
-//        
-//        NSLog (@"Number of elements in array = %d", [uniques count]);
-        
-        
         [self getStoryDescriptionsUsingNewIDs:YES];
-        //[listStories addObject:(snapshot.value)];
     } withCancelBlock:^(NSError *error) {
         NSLog(@"%@", error.description);
     }];
@@ -87,11 +64,6 @@
         }
     }
     else{
-//        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastRefreshDate"];
-//        
-//        for(NSNumber *itemNumber in self.top100StoriesIds){
-//            [self getStoryDataOfItem:itemNumber usingNewIDs:usingNewIDs];
-//        }
     }
     
 }
@@ -102,20 +74,20 @@
     
     NSString *urlString = [NSString stringWithFormat:@"https://hacker-news.firebaseio.com/v0/item/%@",itemNumber];
     
-//    NSLog(@"%@", itemNumber);
+    NSLog(@"%@", itemNumber);
     
     Firebase *storyDescriptionRef = [[Firebase alloc] initWithUrl:urlString];
     
     [self.storyEventRefs addObject:storyDescriptionRef];
-    //[storyDescriptionRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
     [storyDescriptionRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         
-        //NSDictionary *responseDictionary = snapshot.value;
-        
-//        NSLog(@"%@", snapshot.value);
         if(snapshot.value != [NSNull null]){
+            [self.tableView beginUpdates];
             [self.storiesArray addObject:snapshot.value];
-            [self.tableView reloadData];
+            NSInteger row = self.storiesArray.count - 1;
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView endUpdates];
         }
 
         
@@ -132,11 +104,11 @@
     
     // Initialize array that will store stories.
     self.storiesArray = [[NSMutableArray alloc] init];
-    self.heights = [[NSMutableArray alloc] init];
     
     self.navigationController.navigationBar.topItem.title = self.navTitle;
     
-    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 160.0;
     
     UINib *celllNib = [UINib nibWithNibName:@"StoryTableCellView" bundle:nil] ;
     [self.tableView registerNib:celllNib forCellReuseIdentifier:@"storyCell"];
@@ -144,21 +116,16 @@
     [self getTopStories];
     
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    //HUD.labelText = @"Fetching Stories";
     HUD.detailsLabelText = self.loadMsg;
     HUD.mode = MBProgressHUDModeDeterminate;
     
     [HUD showWhileExecuting:@selector(doSomeFunkyStuff) onTarget:self withObject:nil animated:YES];
     
-    //self.title = @"Top Stories";
 
     [self.view addSubview:HUD];
     [HUD show:YES];
     
-    
     self.tableView.scrollsToTop = YES;
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -195,14 +162,7 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-
-{
-    
-//    static NSString *CellIdentifier = @"storyCell";
-//    StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     StoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"storyCell" forIndexPath:indexPath];
     
@@ -223,15 +183,10 @@
     NSTimeInterval timeSince = [[story valueForKey:@"time"] doubleValue];
     NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970: timeSince];
     NSString *ago = [date timeAgo];
-    //NSLog(@"Output is: \"%@\"", ago);
     
-    //Get Comments count
     NSMutableArray *commentArray = [story valueForKey:@"kids"];
     NSUInteger commentCount = [commentArray count];
     NSString *commentCountText = [NSString stringWithFormat:@"%@",  @(commentCount)];
-    //NSLog (@"Number of elements in array = %lu", [commentArray count]);
-    
-    //Get the HostName
 
     NSURL* url = [NSURL URLWithString:[story valueForKey:@"url"]];
     NSString* reducedUrl = [NSString stringWithFormat:
@@ -239,21 +194,18 @@
     //NSLog(@"Output is: \"%@\"", reducedUrl);
     if([story valueForKey:@"deleted"]){
     } else {
+        // Apply the data to each row
+        cell.titleLabel.text = [story valueForKey:@"title"];
+        cell.authorWithTimeLabel.text = [NSString stringWithFormat:@"by %@, %@", [story valueForKey:@"by"], ago];
+        cell.commentLabel.text = [NSString stringWithFormat:@"%@", commentCountText];
+        cell.scoreLabel.text = [NSString stringWithFormat:@"%@", [story valueForKey:@"score"]];
+        cell.sourceLabel.text = [NSString stringWithFormat:@"%@", reducedUrl];
+        cell.typeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [story valueForKeyPath:@"type"]]];
         
-    
-    // Apply the data to each row
-    cell.titleLabel.text = [story valueForKey:@"title"];
-    cell.authorWithTimeLabel.text = [NSString stringWithFormat:@"by %@, %@", [story valueForKey:@"by"], ago];
-    cell.commentLabel.text = [NSString stringWithFormat:@"%@", commentCountText];
-    cell.scoreLabel.text = [NSString stringWithFormat:@"%@", [story valueForKey:@"score"]];
-    cell.sourceLabel.text = [NSString stringWithFormat:@"%@", reducedUrl];
-    cell.typeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [story valueForKeyPath:@"type"]]];
-    
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    cell.titleLabel.numberOfLines = 0;
-    [cell.titleLabel sizeToFit];
-    
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        cell.titleLabel.numberOfLines = 0;
+        [cell.titleLabel sizeToFit];
     }
     [HUD hide:YES];
     
@@ -262,40 +214,10 @@
     return cell;
 }
 
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-   
-    NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
-    NSString* text = [story valueForKey:@"title"];
-    NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:text attributes:
-                                                                                               @{ NSFontAttributeName: [UIFont systemFontOfSize:16]}];
-    
-        //its not possible to get the cell label width since this method is called before cellForRow so best we can do
-        //is get the table width and subtract the default extra space on either side of the label.
-    CGSize constraintSize = CGSizeMake(300 - 30, MAXFLOAT);
-    
-    CGRect rect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
-    
-        //NSLog(@"Output is: \"%d\"", rect.size.height);
-    
-        //Add back in the extra padding above and below label on table cell.
-        rect.size.height = rect.size.height + 23;
-    
-        //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
-    
-    return (rect.size.height < 44 ? 90 : 110);
-    //return 95;
-}
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
-    //NSString *fullURL = [story valueForKey:@"url"];
-    //if(indexPath.row == 0) {
         [self performSegueWithIdentifier:@"toWebView" sender:story];
-    //}
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -308,34 +230,5 @@
         controller.story = sender;
     }
 }
-
-//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    
-//    //1. Setup the CATransform3D structure
-//    CATransform3D rotation;
-//    rotation = CATransform3DMakeRotation( (90.0*M_PI)/180, 0.0, 0.7, 0.4);
-//    rotation.m34 = 1.0/ -600;
-//    
-//    
-//    //2. Define the initial state (Before the animation)
-//    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
-//    cell.layer.shadowOffset = CGSizeMake(10, 10);
-//    cell.alpha = 0;
-//    
-//    cell.layer.transform = rotation;
-//    cell.layer.anchorPoint = CGPointMake(0, 0.5);
-//    
-//    
-//    //3. Define the final state (After the animation) and commit the animation
-//    [UIView beginAnimations:@"rotation" context:NULL];
-//    [UIView setAnimationDuration:0.8];
-//    cell.layer.transform = CATransform3DIdentity;
-//    cell.alpha = 1;
-//    cell.layer.shadowOffset = CGSizeMake(0, 0);
-//    [UIView commitAnimations];
-//    
-//}
-
 
 @end
