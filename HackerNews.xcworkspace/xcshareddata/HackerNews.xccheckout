@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>97AB5BB3-A2A0-4532-AF62-D2D7874E1601</string>
+	<string>4F2AC62E-4459-4854-9900-A521830ABE07</string>
 	<key>IDESourceControlProjectName</key>
 	<string>HackerNews</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>EA968A234A6F0CCDD81314EBF74145CD4C9C0ECC</key>
-		<string>https://github.com/vetri02/HackerNews.git</string>
+		<string>https://github.com/Lumenela/HackerNews.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>HackerNews.xcworkspace</string>
@@ -21,7 +21,7 @@
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/vetri02/HackerNews.git</string>
+	<string>https://github.com/Lumenela/HackerNews.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>EA968A234A6F0CCDD81314EBF74145CD4C9C0ECC</string>
 			<key>IDESourceControlWCCName</key>
-			<string>HackerNews</string>
+			<string>HackerNews-master</string>
 		</dict>
 	</array>
 </dict>

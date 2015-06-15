@@ -18,22 +18,25 @@
 
 @interface HomeTableViewController ()
 
-@property NSMutableArray *temporaryTop500StoriesIds;
-@property NSMutableArray *storyEventRefs;
-@property NSMutableArray *dataArr;
-@property NSMutableArray *heights;
+@property (nonatomic, strong) NSMutableArray *temporaryTop500StoriesIds;
+@property (nonatomic, strong) NSMutableArray *storyEventRefs;
+@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSMutableArray *heights;
 @property (nonatomic, assign) NSInteger counter;
 @property (nonatomic, strong) StoryTableViewCell *prototypeCell;
 
-
-
-
-
 @end
+
 
 @implementation HomeTableViewController
 
-
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    self.datasourceName = @"topstories";
+    self.loadMsg = @"Fetching Top Stories";
+    self.navTitle = @"Top Stories";
+    return self;
+}
 
 
 #pragma mark - FireBase API
@@ -111,7 +114,7 @@
         
         //NSDictionary *responseDictionary = snapshot.value;
         
-        NSLog(@"%@", snapshot.value);
+//        NSLog(@"%@", snapshot.value);
         if(snapshot.value != [NSNull null]){
             [self.tableView beginUpdates];
             [self.storiesArray addObject:snapshot.value];
@@ -141,12 +144,7 @@
     // Initialize array that will store stories.
     self.storiesArray = [[NSMutableArray alloc] init];
     self.heights = [[NSMutableArray alloc] init];
-    self.datasourceName = @"topstories";
-    self.loadMsg = @"Fetching Top Stories";
-    self.navTitle = @"Top Stories";
     
-    
-
     self.navigationController.navigationBar.topItem.title = self.navTitle;
     
     
@@ -176,8 +174,8 @@
     
 }
 
--(void) viewWillAppear {
-    self.navTitle = @"Top Stories";
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = self.navTitle;
     self.title = self.navTitle;
 }
