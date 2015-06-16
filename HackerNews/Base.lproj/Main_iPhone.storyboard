@@ -172,6 +172,12 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Z7e-lx-b2a">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="ilH-aJ-IVl" eventType="valueChanged" id="Xzk-B6-jNs"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <segue destination="ZjH-Uf-knr" kind="push" identifier="latesttoWebView" id="8rF-nL-EbF"/>
                     </connections>
@@ -327,6 +333,12 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Top Stories" id="2z3-YY-CD6"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="MjS-6U-Qhs">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="0eC-IM-khP" eventType="valueChanged" id="PYn-VU-A33"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <segue destination="ZjH-Uf-knr" kind="push" identifier="topStoriestoWebView" id="MQs-EZ-GAP"/>
                     </connections>

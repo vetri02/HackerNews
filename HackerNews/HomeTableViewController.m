@@ -24,6 +24,9 @@
 @property (nonatomic, strong) NSMutableArray *heights;
 @property (nonatomic, assign) NSInteger counter;
 @property (nonatomic, strong) StoryTableViewCell *prototypeCell;
+- (IBAction)refresh:(UIRefreshControl *)sender;
+
+
 
 @end
 
@@ -172,6 +175,11 @@
     self.tableView.estimatedRowHeight = 100.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
+//    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"Pull to Refresh"];
+    
+    [self.refreshControl setTintColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1] /*#cccccc*/];
+     //[self.refreshControl setAttributedTitle:string];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -180,15 +188,7 @@
     self.title = self.navTitle;
 }
 
-- (void)doSomeFunkyStuff {
-    float progress = 0.0;
-    
-    while (progress < 1.0) {
-        progress += 0.005;
-        HUD.progress = progress;
-        usleep(50000);
-    }
-}
+
 
 
 
@@ -324,33 +324,23 @@
     }
 }
 
-//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//
-//
-//    //1. Setup the CATransform3D structure
-//    CATransform3D rotation;
-//    rotation = CATransform3DMakeRotation( (90.0*M_PI)/180, 0.0, 0.7, 0.4);
-//    rotation.m34 = 1.0/ -600;
-//
-//
-//    //2. Define the initial state (Before the animation)
-//    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
-//    cell.layer.shadowOffset = CGSizeMake(10, 10);
-//    cell.alpha = 0;
-//
-//    cell.layer.transform = rotation;
-//    cell.layer.anchorPoint = CGPointMake(0, 0.5);
-//
-//
-//    //3. Define the final state (After the animation) and commit the animation
-//    [UIView beginAnimations:@"rotation" context:NULL];
-//    [UIView setAnimationDuration:0.8];
-//    cell.layer.transform = CATransform3DIdentity;
-//    cell.alpha = 1;
-//    cell.layer.shadowOffset = CGSizeMake(0, 0);
-//    [UIView commitAnimations];
-//    
-//}
 
 
+
+
+
+- (IBAction)refresh:(UIRefreshControl *)sender {
+    
+    
+    
+    [self.storiesArray removeAllObjects];
+    [self.tableView reloadData];
+    
+    HUD.progress = 0;
+    
+    [self getTopStories];
+    [HUD show:YES];
+    
+    [sender endRefreshing];
+}
 @end

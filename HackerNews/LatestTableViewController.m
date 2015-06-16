@@ -11,6 +11,7 @@
 #import "WebViewController.h"
 
 @interface LatestTableViewController ()
+- (IBAction)refresh:(UIRefreshControl *)sender;
 
 @end
 
@@ -74,4 +75,13 @@
  }
  */
 
+- (IBAction)refresh:(UIRefreshControl *)sender {
+//    [self.storiesArray removeAllObjects];
+//    [self.tableView reloadData];
+//    
+//    //[super getTopStories];
+//    [HUD show:YES];
+    
+    [sender endRefreshing];
+}
 @end
