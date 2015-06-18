@@ -221,7 +221,7 @@
     
     if (cell==nil) {
         
-        NSArray* storyObject = [[NSBundle mainBundle] loadNibNamed:@"CurrentOffersInfoView" owner:self options:nil];
+        NSArray* storyObject = [[NSBundle mainBundle] loadNibNamed:@"StoryTableCellView" owner:self options:nil];
         
         cell = [storyObject firstObject];
     }

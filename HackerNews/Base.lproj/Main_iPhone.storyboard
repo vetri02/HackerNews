@@ -420,7 +420,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" rowHeight="150" id="fFV-3l-gFW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="commentsCell" rowHeight="150" id="fFV-3l-gFW" customClass="CommentTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fFV-3l-gFW" id="CF8-Bl-frc">
                                             <autoresizingMask key="autoresizingMask"/>
