@@ -76,11 +76,11 @@
  */
 
 - (IBAction)refresh:(UIRefreshControl *)sender {
-//    [self.storiesArray removeAllObjects];
-//    [self.tableView reloadData];
-//    
-//    //[super getTopStories];
-//    [HUD show:YES];
+    [self.storiesArray removeAllObjects];
+    [self.tableView reloadData];
+    
+    [super viewDidLoad];
+    //[HUD show:YES];
     
     [sender endRefreshing];
 }

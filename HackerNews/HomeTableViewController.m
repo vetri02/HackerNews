@@ -359,10 +359,10 @@
     [self.storiesArray removeAllObjects];
     [self.tableView reloadData];
     
-    HUD.progress = 0;
     
-    [self getTopStories];
-    [HUD show:YES];
+    
+    [self viewDidLoad];
+    
     
     [sender endRefreshing];
 }
