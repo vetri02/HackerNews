@@ -18,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *commentImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
 
+@property (strong, nonatomic) NSDictionary *story;
+
 @end
