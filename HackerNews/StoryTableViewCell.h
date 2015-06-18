@@ -20,4 +20,6 @@
 
 @property (strong, nonatomic) NSDictionary *story;
 
++ (CGFloat)heightForStory:(NSDictionary *)story;
+
 @end

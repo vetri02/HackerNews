@@ -50,4 +50,25 @@
     }
 }
 
++ (CGFloat)heightForStory:(NSDictionary *)story {
+    NSString* text = [story valueForKey:@"title"];
+    NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:text attributes:
+                                             @{ NSFontAttributeName: [UIFont systemFontOfSize:16]}];
+    
+    //its not possible to get the cell label width since this method is called before cellForRow so best we can do
+    //is get the table width and subtract the default extra space on either side of the label.
+    CGSize constraintSize = CGSizeMake(300 - 30, MAXFLOAT);
+    
+    CGRect rect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
+    
+    //NSLog(@"Output is: \"%d\"", rect.size.height);
+    
+    //Add back in the extra padding above and below label on table cell.
+    rect.size.height = rect.size.height + 70;
+    
+    //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
+    
+    return rect.size.height;
+}
+
 @end
