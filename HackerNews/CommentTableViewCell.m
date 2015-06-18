@@ -1,14 +1,14 @@
 //
-//  ListTableViewCell.m
+//  CommentTableViewCell.m
 //  HackerNews
 //
-//  Created by Vetrichelvan on 18/02/15.
+//  Created by Vetrichelvan on 18/06/15.
 //  Copyright (c) 2015 Vetrichelvan. All rights reserved.
 //
 
-#import "ListTableViewCell.h"
+#import "CommentTableViewCell.h"
 
-@implementation ListTableViewCell
+@implementation CommentTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

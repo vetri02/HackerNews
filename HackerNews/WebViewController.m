@@ -10,6 +10,7 @@
 #import "CommentsTableViewController.h"
 
 @interface WebViewController ()
+- (IBAction)commentsButton:(UIButton *)sender;
 
 @end
 
@@ -45,16 +46,7 @@
     theWebView.scrollView.zoomScale = rw;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue 
-{
-    // Make sure your segue name in storyboard is the same as this line
-    if ([[segue identifier] isEqualToString:@"webToComments"])
-    {
-        //if you need to pass data to the next controller do it here
-        CommentsTableViewController *controller = segue.destinationViewController;
-        controller.story = self.story;
-    }
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -70,5 +62,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)commentsButton:(UIButton *)sender {
+    
+    [self performSegueWithIdentifier:@"webToComments" sender:self.story];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"webToComments"])
+    {
+        //if you need to pass data to the next controller do it here
+        CommentsTableViewController *controller = segue.destinationViewController;
+        controller.story = sender;
+    }
+}
 
 @end
