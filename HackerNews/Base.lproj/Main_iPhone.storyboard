@@ -171,6 +171,15 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Z7e-lx-b2a">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="ilH-aJ-IVl" eventType="valueChanged" id="Xzk-B6-jNs"/>
+                        </connections>
+                    </refreshControl>
+                    <connections>
+                        <segue destination="ZjH-Uf-knr" kind="push" identifier="latesttoWebView" id="8rF-nL-EbF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGt-La-vWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -204,6 +213,15 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="0gw-fx-bWX">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="Nrd-Um-nIO" eventType="valueChanged" id="ZwR-bP-TN5"/>
+                        </connections>
+                    </refreshControl>
+                    <connections>
+                        <segue destination="ZjH-Uf-knr" kind="push" identifier="jobstoWebView" id="qBj-4v-4gv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rW7-kr-Eee" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -245,8 +263,14 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Top Stories" id="2z3-YY-CD6"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="MjS-6U-Qhs">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="0eC-IM-khP" eventType="valueChanged" id="PYn-VU-A33"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
-                        <segue destination="ZjH-Uf-knr" kind="push" identifier="toWebView" id="MQs-EZ-GAP"/>
+                        <segue destination="ZjH-Uf-knr" kind="push" identifier="topStoriestoWebView" id="MQs-EZ-GAP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLM-5g-Hiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,7 +280,7 @@
         <!--News Page-->
         <scene sceneID="E9S-UW-YzN">
             <objects>
-                <tableViewController id="fnA-Bg-GpQ" userLabel="News Page" sceneMemberID="viewController">
+                <tableViewController id="fnA-Bg-GpQ" userLabel="News Page" customClass="CommentsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Htl-2K-sPi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,7 +344,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" rowHeight="150" id="fFV-3l-gFW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="commentsCell" rowHeight="150" id="fFV-3l-gFW" customClass="CommentTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fFV-3l-gFW" id="CF8-Bl-frc">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -407,7 +431,7 @@
                         <viewControllerLayoutGuide type="bottom" id="SXX-Ir-wgT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G8O-2L-Orm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hTf-jy-juh">
@@ -428,11 +452,15 @@
                                     <color key="titleShadowColor" red="0.99991267919540405" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fnA-Bg-GpQ" kind="push" id="fCW-3e-OmX"/>
+                                    <action selector="commentsButton:" destination="ZjH-Uf-knr" eventType="touchUpInside" id="zdK-LD-LgZ"/>
                                 </connections>
                             </button>
+                            <connections>
+                                <segue destination="fnA-Bg-GpQ" kind="push" identifier="webToComments" id="hXM-Yt-JrL"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="viewWeb" destination="hTf-jy-juh" id="Sa8-FD-uKO"/>
                     </connections>
@@ -572,5 +600,8 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="qBj-4v-4gv"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.91764705882352937" green="0.30196078431372547" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
 </document>

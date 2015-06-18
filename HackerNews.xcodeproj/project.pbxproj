@@ -11,8 +11,6 @@
 		1B1B67791B2AD319007CD192 /* LatestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1B67781B2AD319007CD192 /* LatestTableViewController.m */; };
 		1B1B677C1B2AE22B007CD192 /* JobsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1B677B1B2AE22B007CD192 /* JobsTableViewController.m */; };
 		1B1B677F1B2B2F04007CD192 /* HNTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1B677E1B2B2F04007CD192 /* HNTabController.m */; };
-		1B1FBEB619D7048B0021FC10 /* Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1FBEB519D7048B0021FC10 /* Gradient.m */; };
-		1B1FBEB919D70D8E0021FC10 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1FBEB819D70D8E0021FC10 /* CustomButton.m */; };
 		1B371769198E27F600FF0B04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B371768198E27F600FF0B04 /* Foundation.framework */; };
 		1B37176B198E27F600FF0B04 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B37176A198E27F600FF0B04 /* CoreGraphics.framework */; };
 		1B37176D198E27F600FF0B04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B37176C198E27F600FF0B04 /* UIKit.framework */; };
@@ -27,11 +25,13 @@
 		1B37178D198E27F600FF0B04 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B37176C198E27F600FF0B04 /* UIKit.framework */; };
 		1B371795198E27F600FF0B04 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B371793198E27F600FF0B04 /* InfoPlist.strings */; };
 		1B371797198E27F600FF0B04 /* HackerNewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B371796198E27F600FF0B04 /* HackerNewsTests.m */; };
+		1B63FEEC1B2EF7E4004DD76C /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B63FEEB1B2EF7E4004DD76C /* CommentsTableViewController.m */; };
 		1B6882651B0B7BE700235DF2 /* StoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */; };
 		1B68826E1B0C7C9E00235DF2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B68826C1B0C7C9E00235DF2 /* Fabric.framework */; };
 		1B68826F1B0C7C9E00235DF2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B68826D1B0C7C9E00235DF2 /* Crashlytics.framework */; };
+		1B7CA6EA1B32063500393B3F /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CA6E81B32063500393B3F /* CommentTableViewCell.m */; };
+		1B7CA6EB1B32063500393B3F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */; };
 		1B906AE81A94AEC000AAF25D /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B906AE71A94AEC000AAF25D /* HomeTableViewController.m */; };
-		1B906AEB1A94FCB100AAF25D /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B906AEA1A94FCB100AAF25D /* ListTableViewCell.m */; };
 		1BE93C851B2C128F00E79497 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE93C841B2C128F00E79497 /* WebViewController.m */; };
 		59D1696BBC3ADDA2D09D3995 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 118B4724AAFC459102096B90 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -55,10 +55,6 @@
 		1B1B677B1B2AE22B007CD192 /* JobsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsTableViewController.m; sourceTree = "<group>"; };
 		1B1B677D1B2B2F04007CD192 /* HNTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNTabController.h; sourceTree = "<group>"; };
 		1B1B677E1B2B2F04007CD192 /* HNTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNTabController.m; sourceTree = "<group>"; };
-		1B1FBEB419D7048B0021FC10 /* Gradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gradient.h; sourceTree = "<group>"; };
-		1B1FBEB519D7048B0021FC10 /* Gradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gradient.m; sourceTree = "<group>"; };
-		1B1FBEB719D70D8E0021FC10 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
-		1B1FBEB819D70D8E0021FC10 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		1B371765198E27F600FF0B04 /* HackerNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B371768198E27F600FF0B04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1B37176A198E27F600FF0B04 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,14 +74,17 @@
 		1B371792198E27F600FF0B04 /* HackerNewsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HackerNewsTests-Info.plist"; sourceTree = "<group>"; };
 		1B371794198E27F600FF0B04 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1B371796198E27F600FF0B04 /* HackerNewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackerNewsTests.m; sourceTree = "<group>"; };
+		1B63FEEA1B2EF7E4004DD76C /* CommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewController.h; sourceTree = "<group>"; };
+		1B63FEEB1B2EF7E4004DD76C /* CommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewController.m; sourceTree = "<group>"; };
 		1B6882631B0B7BE700235DF2 /* StoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryTableViewCell.h; sourceTree = "<group>"; };
 		1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryTableViewCell.m; sourceTree = "<group>"; };
 		1B68826C1B0C7C9E00235DF2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		1B68826D1B0C7C9E00235DF2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		1B7CA6E71B32063500393B3F /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		1B7CA6E81B32063500393B3F /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		1B906AE61A94AEC000AAF25D /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
 		1B906AE71A94AEC000AAF25D /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
-		1B906AE91A94FCB100AAF25D /* ListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewCell.h; sourceTree = "<group>"; };
-		1B906AEA1A94FCB100AAF25D /* ListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewCell.m; sourceTree = "<group>"; };
 		1BE93C831B2C128F00E79497 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		1BE93C841B2C128F00E79497 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		1CC187922F66F7AB805BC709 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,21 +155,17 @@
 		1B37176E198E27F600FF0B04 /* HackerNews */ = {
 			isa = PBXGroup;
 			children = (
-				1B1FBEB419D7048B0021FC10 /* Gradient.h */,
-				1B1FBEB519D7048B0021FC10 /* Gradient.m */,
-				1B1FBEB719D70D8E0021FC10 /* CustomButton.h */,
-				1B1FBEB819D70D8E0021FC10 /* CustomButton.m */,
 				1B371777198E27F600FF0B04 /* AppDelegate.h */,
 				1B371778198E27F600FF0B04 /* AppDelegate.m */,
 				1B37177A198E27F600FF0B04 /* Main_iPhone.storyboard */,
-				1B906AE91A94FCB100AAF25D /* ListTableViewCell.h */,
-				1B906AEA1A94FCB100AAF25D /* ListTableViewCell.m */,
 				1B371780198E27F600FF0B04 /* ViewController.h */,
 				1B371781198E27F600FF0B04 /* ViewController.m */,
 				1B906AE61A94AEC000AAF25D /* HomeTableViewController.h */,
 				1B906AE71A94AEC000AAF25D /* HomeTableViewController.m */,
 				1BE93C831B2C128F00E79497 /* WebViewController.h */,
 				1BE93C841B2C128F00E79497 /* WebViewController.m */,
+				1B63FEEA1B2EF7E4004DD76C /* CommentsTableViewController.h */,
+				1B63FEEB1B2EF7E4004DD76C /* CommentsTableViewController.m */,
 				1B1B677D1B2B2F04007CD192 /* HNTabController.h */,
 				1B1B677E1B2B2F04007CD192 /* HNTabController.m */,
 				1B1B67771B2AD319007CD192 /* LatestTableViewController.h */,
@@ -179,9 +174,12 @@
 				1B1B677B1B2AE22B007CD192 /* JobsTableViewController.m */,
 				1B6882631B0B7BE700235DF2 /* StoryTableViewCell.h */,
 				1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */,
+				1B1B67751B2ACAE4007CD192 /* StoryTableCellView.xib */,
+				1B7CA6E71B32063500393B3F /* CommentTableViewCell.h */,
+				1B7CA6E81B32063500393B3F /* CommentTableViewCell.m */,
+				1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */,
 				1B371783198E27F600FF0B04 /* Images.xcassets */,
 				1B37176F198E27F600FF0B04 /* Supporting Files */,
-				1B1B67751B2ACAE4007CD192 /* StoryTableCellView.xib */,
 			);
 			path = HackerNews;
 			sourceTree = "<group>";
@@ -307,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B371784198E27F600FF0B04 /* Images.xcassets in Resources */,
+				1B7CA6EB1B32063500393B3F /* CommentTableViewCell.xib in Resources */,
 				1B37177C198E27F600FF0B04 /* Main_iPhone.storyboard in Resources */,
 				1B371773198E27F600FF0B04 /* InfoPlist.strings in Resources */,
 				1B1B67761B2ACAE4007CD192 /* StoryTableCellView.xib in Resources */,
@@ -375,16 +374,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B371782198E27F600FF0B04 /* ViewController.m in Sources */,
-				1B1FBEB919D70D8E0021FC10 /* CustomButton.m in Sources */,
 				1B371779198E27F600FF0B04 /* AppDelegate.m in Sources */,
+				1B63FEEC1B2EF7E4004DD76C /* CommentsTableViewController.m in Sources */,
 				1B1B677F1B2B2F04007CD192 /* HNTabController.m in Sources */,
 				1B6882651B0B7BE700235DF2 /* StoryTableViewCell.m in Sources */,
 				1B371775198E27F600FF0B04 /* main.m in Sources */,
 				1B1B67791B2AD319007CD192 /* LatestTableViewController.m in Sources */,
+				1B7CA6EA1B32063500393B3F /* CommentTableViewCell.m in Sources */,
 				1BE93C851B2C128F00E79497 /* WebViewController.m in Sources */,
-				1B906AEB1A94FCB100AAF25D /* ListTableViewCell.m in Sources */,
 				1B906AE81A94AEC000AAF25D /* HomeTableViewController.m in Sources */,
-				1B1FBEB619D7048B0021FC10 /* Gradient.m in Sources */,
 				1B1B677C1B2AE22B007CD192 /* JobsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,7 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,7 +498,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
