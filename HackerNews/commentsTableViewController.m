@@ -79,24 +79,20 @@
         if(snapshot.value != [NSNull null]){
             NSLog(@"%@", snapshot.value);
             [self.commentList addObject:snapshot.value];
-            NSInteger row = self.commentList.count - 1;
-            if (self.tableView.numberOfSections == 1) {
-                [self.tableView beginUpdates];
-                [self.tableView insertSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-                [self.tableView endUpdates];
-            }
-                [self.tableView beginUpdates];
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:1];
-            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-            [self.tableView endUpdates];
+//            NSInteger row = self.commentList.count - 1;
+//            if (self.tableView.numberOfSections == 1) {
+//                [self.tableView beginUpdates];
+//                [self.tableView insertSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+//                [self.tableView endUpdates];
+//            }
+//                [self.tableView beginUpdates];
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:1];
+//            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//            [self.tableView endUpdates];
         }
         self.count++;
         if (self.count == self.temporaryCommentsIds.count) {
             [self.tableView reloadData];
-
-
-           
-//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
         }
         
     } withCancelBlock:^(NSError *error) {
@@ -105,19 +101,9 @@
      ];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 1;
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -190,7 +176,7 @@
             NSArray* storyObject = [[NSBundle mainBundle] loadNibNamed:@"CommentTableCellView" owner:self options:nil];
             cell = [storyObject firstObject];
         }
-        cell.comment = [self.commentList objectAtIndex:indexPath.row];
+//        cell.comment = [self.commentList objectAtIndex:indexPath.row];
         
         [cell layoutIfNeeded];
         [cell setNeedsLayout];
