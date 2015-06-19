@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) NSDictionary *comment;
 
++ (CGFloat)heightForComment:(NSDictionary *)comment;
+
 @end

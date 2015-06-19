@@ -18,4 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *commentImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
 
+@property (strong, nonatomic) NSDictionary *story;
+
++ (CGFloat)heightForStory:(NSDictionary *)story;
+
 @end
