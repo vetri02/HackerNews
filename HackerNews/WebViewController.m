@@ -12,6 +12,7 @@
 @interface WebViewController ()
 - (IBAction)commentsButton:(UIButton *)sender;
 
+
 @end
 
 @implementation WebViewController
@@ -32,20 +33,39 @@
     
     NSLog(@"%@", self.story);
     
+    self.viewWeb.delegate = self;
+    self.viewWeb.progressDelegate = self;
+    
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)theWebView
+//- (void)webViewDidFinishLoad:(UIWebView *)theWebView
+//{
+//    CGSize contentSize = theWebView.scrollView.contentSize;
+//    CGSize viewSize = self.view.bounds.size;
+//    
+//    float rw = viewSize.width / contentSize.width;
+//    
+//    theWebView.scrollView.minimumZoomScale = rw;
+//    theWebView.scrollView.maximumZoomScale = rw;
+//    theWebView.scrollView.zoomScale = rw;
+//}
+
+#pragma mark - NJKWebViewProgressDelegate
+
+-(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
 {
-    CGSize contentSize = theWebView.scrollView.contentSize;
-    CGSize viewSize = self.view.bounds.size;
+    //self.progressView = progress;
+    NSLog(@"%f", progress);
+    if(progress == 1.0){
+        self.progressView.hidden = YES;
+        CGRect frame = self.viewWeb.frame;
+        frame.origin.y=0;//pass the cordinate which you want
+        self.viewWeb.frame= frame;
+    }else {
+        [self.progressView setProgress:progress animated:YES];
+    }
     
-    float rw = viewSize.width / contentSize.width;
-    
-    theWebView.scrollView.minimumZoomScale = rw;
-    theWebView.scrollView.maximumZoomScale = rw;
-    theWebView.scrollView.zoomScale = rw;
 }
-
 
 
 - (void)didReceiveMemoryWarning {
