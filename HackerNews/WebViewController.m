@@ -31,6 +31,16 @@
     [self.navigationItem.backBarButtonItem setTitle:@" "];
     //self.navigationController.toolbarHidden = NO;
     
+//    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320-10, 44)];
+//    titleLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+//    //titleLabel.backgroundColor = [UIColor clearColor];
+//    titleLabel.font = [UIFont fontWithName:@"AvenirNext-Medium" size:14.0f];
+//    //titleLabel.shadowColor = [UIColor colorWithWhite:0 alpha:0.5];
+//    titleLabel.text = [self.story valueForKey:@"title"];
+//    titleLabel.textAlignment = NSTextAlignmentCenter;
+//    titleLabel.textColor = [UIColor whiteColor];
+    
+    
     NSLog(@"%@", self.story);
     
     self.viewWeb.delegate = self;

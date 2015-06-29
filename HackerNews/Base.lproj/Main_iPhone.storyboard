@@ -452,11 +452,10 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="File system that stores location of file in Pi" id="bZM-O2-6k1">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="JWb-tA-dAw">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iXV-h3-NUY">
-                                <rect key="frame" x="116" y="234" width="87" height="36"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iXV-h3-NUY">
+                                <rect key="frame" x="217" y="4" width="28" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                <state key="normal" title="Comments">
+                                <state key="normal" image="webComments">
                                     <color key="titleColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -464,6 +463,9 @@
                                     <action selector="commentsButton:" destination="ZjH-Uf-knr" eventType="touchUpInside" id="2xR-Zf-KgH"/>
                                 </connections>
                             </button>
+                            <connections>
+                                <segue destination="fnA-Bg-GpQ" kind="push" identifier="webToComments" id="cYG-mk-hRy"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -600,6 +602,7 @@
         <image name="story" width="26" height="26"/>
         <image name="userFull" width="20" height="21"/>
         <image name="userLine" width="21" height="22"/>
+        <image name="webComments" width="28" height="22"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -607,8 +610,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="MQs-EZ-GAP"/>
-        <segue reference="FzI-He-X0n"/>
+        <segue reference="8rF-nL-EbF"/>
+        <segue reference="cYG-mk-hRy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.91764705882352937" green="0.30196078431372547" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
 </document>
