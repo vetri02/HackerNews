@@ -36,6 +36,11 @@
     self.viewWeb.delegate = self;
     self.viewWeb.progressDelegate = self;
     
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+
+    
+     [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"AvenirNext-Medium" size:16.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
+    
 }
 
 //- (void)webViewDidFinishLoad:(UIWebView *)theWebView
@@ -61,6 +66,7 @@
         CGRect frame = self.viewWeb.frame;
         frame.origin.y=0;//pass the cordinate which you want
         self.viewWeb.frame= frame;
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }else {
         [self.progressView setProgress:progress animated:YES];
     }
@@ -73,20 +79,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)commentsButton:(UIButton *)sender {
     
     [self performSegueWithIdentifier:@"webToComments" sender:self.story];
 }
+
+#pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

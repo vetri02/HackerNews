@@ -130,7 +130,7 @@
         
         self.counter++;
         HUD.progress = (float)self.counter / self.temporaryTop500StoriesIds.count;
-        if (self.counter == self.temporaryTop500StoriesIds.count) {
+        if (self.counter == (self.temporaryTop500StoriesIds.count-3)) {
             [HUD hide:YES];
         }
         

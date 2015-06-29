@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="o6g-8N-CAs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AcT-gc-w0B">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5mh-74-3W6" customClass="TPKeyboardAvoidingScrollView">
@@ -152,11 +152,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="storyCell" id="6t2-e5-QZ7" customClass="StoryTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="storyCell" id="6t2-e5-QZ7" customClass="StoryTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6t2-e5-QZ7" id="V83-aI-Ti7">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="fnA-Bg-GpQ" kind="push" identifier="LatestToComments" id="FzI-He-X0n"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -194,11 +197,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="buF-0l-3gg">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="buF-0l-3gg">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="buF-0l-3gg" id="IvJ-2a-JSU">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="fnA-Bg-GpQ" kind="push" identifier="jobsToComments" id="05X-Ed-HDg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -245,7 +251,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="push" id="v0h-2Q-h07"/>
+                                    <segue destination="fnA-Bg-GpQ" kind="push" identifier="topStoriesToComments" id="oCu-gc-rpo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -282,7 +288,7 @@
             <objects>
                 <tableViewController id="fnA-Bg-GpQ" userLabel="News Page" customClass="CommentsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Htl-2K-sPi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -417,7 +423,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lu-TX-1fa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4165" y="143"/>
+            <point key="canvasLocation" x="4177" y="143"/>
         </scene>
         <!--New WebView-->
         <scene sceneID="rva-TN-psu">
@@ -428,11 +434,11 @@
                         <viewControllerLayoutGuide type="bottom" id="SXX-Ir-wgT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G8O-2L-Orm">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZJY-Zr-hTg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="3"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
                                 <color key="tintColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hTf-jy-juh">
@@ -443,26 +449,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.0078431377187371254" green="0.54901963472366333" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="File system that stores location of file in Pi" id="Xcg-BS-8JR">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="hDf-yM-E4a">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1ss-DF-Rug">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="File system that stores location of file in Pi" id="bZM-O2-6k1">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="JWb-tA-dAw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iXV-h3-NUY">
                                 <rect key="frame" x="116" y="234" width="87" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                 <state key="normal" title="Comments">
-                                    <color key="titleColor" red="0.99991267919540405" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.99991267919540405" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="commentsButton:" destination="ZjH-Uf-knr" eventType="touchUpInside" id="zdK-LD-LgZ"/>
+                                    <action selector="commentsButton:" destination="ZjH-Uf-knr" eventType="touchUpInside" id="2xR-Zf-KgH"/>
                                 </connections>
                             </button>
-                            <connections>
-                                <segue destination="fnA-Bg-GpQ" kind="push" identifier="webToComments" id="hXM-Yt-JrL"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="progressView" destination="ZJY-Zr-hTg" id="7dO-2F-xGr"/>
                         <outlet property="viewWeb" destination="hTf-jy-juh" id="Sa8-FD-uKO"/>
@@ -605,6 +608,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="MQs-EZ-GAP"/>
+        <segue reference="FzI-He-X0n"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.91764705882352937" green="0.30196078431372547" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
 </document>
