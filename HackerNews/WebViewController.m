@@ -8,9 +8,15 @@
 
 #import "WebViewController.h"
 #import "CommentsTableViewController.h"
+#import <TUSafariActivity/TUSafariActivity.h>
 
 @interface WebViewController ()
 - (IBAction)commentsButton:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *webBack;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *webForward;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *share;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *refresh;
+- (IBAction)webShare:(id)sender;
 
 
 @end
@@ -27,18 +33,48 @@
     NSURLRequest *requestObject = [NSURLRequest requestWithURL:url];
     [self.viewWeb loadRequest:requestObject];
     
-    self.title = [self.story valueForKey:@"title"];
-    [self.navigationItem.backBarButtonItem setTitle:@" "];
-    //self.navigationController.toolbarHidden = NO;
+    self.viewWeb.scalesPageToFit = YES;
     
-//    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320-10, 44)];
-//    titleLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-//    //titleLabel.backgroundColor = [UIColor clearColor];
-//    titleLabel.font = [UIFont fontWithName:@"AvenirNext-Medium" size:14.0f];
-//    //titleLabel.shadowColor = [UIColor colorWithWhite:0 alpha:0.5];
-//    titleLabel.text = [self.story valueForKey:@"title"];
-//    titleLabel.textAlignment = NSTextAlignmentCenter;
-//    titleLabel.textColor = [UIColor whiteColor];
+    
+    //TEST
+    NSAssert([self.viewWeb isKindOfClass:[UIWebView class]], @"You webView outlet is not correctly connected.");
+    NSAssert(self.webBack, @"Your back button outlet is not correctly connected");
+    NSAssert(self.refresh, @"Your refresh button outlet is not correctly connected");
+    NSAssert(self.webForward, @"Your forward button outlet is not correctly connected");
+    NSAssert((self.webBack.target == self.viewWeb) && (self.webBack.action = @selector(goBack)), @"Your back button action is not connected to goBack.");
+    NSAssert((self.refresh.target == self.viewWeb) && (self.refresh.action = @selector(reload)), @"Your refresh button action is not connected to reload.");
+    NSAssert((self.webForward.target == self.viewWeb) && (self.webForward.action = @selector(goForward)), @"Your forward button action is not connected to goForward.");
+    NSAssert(self.viewWeb.scalesPageToFit, @"You forgot to check 'Scales Page to Fit' for your web view.");
+    
+    //self.title = [self.story valueForKey:@"title"];
+    //[self.navigationItem.backBarButtonItem setTitle:@" "];
+    //self.navigationController.toolbarHidden = NO;
+    self.navigationItem.hidesBackButton=YES;
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0,0,36,30);
+    [button setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    
+    [button setTitle:@"Back" forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont fontWithName:@"Avenir-Heavy" size:16.0f]];
+    
+    [button addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    [self.navigationItem setLeftBarButtonItem:barButtonItem];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320-20, 44)];
+    titleLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    //titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16.0f];
+    //titleLabel.shadowColor = [UIColor colorWithWhite:0 alpha:0.5];
+    titleLabel.text = [self.story valueForKey:@"title"];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor whiteColor];
+    
+    self.navigationItem.titleView = titleLabel;
+    
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
     
     
     NSLog(@"%@", self.story);
@@ -108,4 +144,27 @@
     }
 }
 
+- (IBAction)webShare:(id)sender {
+    NSString *textToShare = [self.story valueForKey:@"title"];
+    NSURL *myWebsite = [NSURL URLWithString:[self.story valueForKey:@"url"]];
+    
+    NSArray *objectsToShare = @[textToShare, myWebsite];
+    
+    TUSafariActivity *activity = [[TUSafariActivity alloc] init];
+//    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[myWebsite] applicationActivities:@[activity]];
+//    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:@[activity]];
+    
+//    NSArray *excludeActivities = @[UIActivityTypeAirDrop,
+//                                   UIActivityTypePrint,
+//                                   UIActivityTypeAssignToContact,
+//                                   UIActivityTypeSaveToCameraRoll,
+//                                   UIActivityTypeAddToReadingList,
+//                                   UIActivityTypePostToFlickr,
+//                                   UIActivityTypePostToVimeo];
+    
+    //activityVC.excludedActivityTypes = excludeActivities;
+    
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
 @end
