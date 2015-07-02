@@ -33,10 +33,12 @@
     self.timeLabel.text = ago;
     self.userLabel.text = [comment valueForKey:@"by"];
     
+    
+    
     // Transform HTML into an attributed string
 //    NSAttributedString *stringWithHTMLAttributes = [[NSAttributedString alloc]   initWithFileURL:[comment valueForKey:@"text"] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
-//    
-//    self.commentLabel.attributedText = stringWithHTMLAttributes;
+    
+    //self.commentText.attributedText = [comment valueForKey:@"text"];
     
     self.commentLabel.text = [comment valueForKey:@"text"];
 }
