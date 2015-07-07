@@ -32,6 +32,8 @@
 		1B7CA6EA1B32063500393B3F /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CA6E81B32063500393B3F /* CommentTableViewCell.m */; };
 		1B7CA6EB1B32063500393B3F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */; };
 		1B906AE81A94AEC000AAF25D /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B906AE71A94AEC000AAF25D /* HomeTableViewController.m */; };
+		1B9262101B4BEED100358E1C /* StoryTextCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B92620F1B4BEED100358E1C /* StoryTextCellView.xib */; };
+		1B9262131B4BF03400358E1C /* StoryTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9262121B4BF03400358E1C /* StoryTextViewCell.m */; };
 		1BE93C851B2C128F00E79497 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE93C841B2C128F00E79497 /* WebViewController.m */; };
 		59D1696BBC3ADDA2D09D3995 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 118B4724AAFC459102096B90 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -85,6 +87,9 @@
 		1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		1B906AE61A94AEC000AAF25D /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
 		1B906AE71A94AEC000AAF25D /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
+		1B92620F1B4BEED100358E1C /* StoryTextCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryTextCellView.xib; sourceTree = "<group>"; };
+		1B9262111B4BF03400358E1C /* StoryTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryTextViewCell.h; sourceTree = "<group>"; };
+		1B9262121B4BF03400358E1C /* StoryTextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryTextViewCell.m; sourceTree = "<group>"; };
 		1BE93C831B2C128F00E79497 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		1BE93C841B2C128F00E79497 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		1CC187922F66F7AB805BC709 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +180,9 @@
 				1B6882631B0B7BE700235DF2 /* StoryTableViewCell.h */,
 				1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */,
 				1B1B67751B2ACAE4007CD192 /* StoryTableCellView.xib */,
+				1B9262111B4BF03400358E1C /* StoryTextViewCell.h */,
+				1B9262121B4BF03400358E1C /* StoryTextViewCell.m */,
+				1B92620F1B4BEED100358E1C /* StoryTextCellView.xib */,
 				1B7CA6E71B32063500393B3F /* CommentTableViewCell.h */,
 				1B7CA6E81B32063500393B3F /* CommentTableViewCell.m */,
 				1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */,
@@ -309,6 +317,7 @@
 				1B37177C198E27F600FF0B04 /* Main_iPhone.storyboard in Resources */,
 				1B371773198E27F600FF0B04 /* InfoPlist.strings in Resources */,
 				1B1B67761B2ACAE4007CD192 /* StoryTableCellView.xib in Resources */,
+				1B9262101B4BEED100358E1C /* StoryTextCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +389,7 @@
 				1B6882651B0B7BE700235DF2 /* StoryTableViewCell.m in Sources */,
 				1B371775198E27F600FF0B04 /* main.m in Sources */,
 				1B1B67791B2AD319007CD192 /* LatestTableViewController.m in Sources */,
+				1B9262131B4BF03400358E1C /* StoryTextViewCell.m in Sources */,
 				1B7CA6EA1B32063500393B3F /* CommentTableViewCell.m in Sources */,
 				1BE93C851B2C128F00E79497 /* WebViewController.m in Sources */,
 				1B906AE81A94AEC000AAF25D /* HomeTableViewController.m in Sources */,

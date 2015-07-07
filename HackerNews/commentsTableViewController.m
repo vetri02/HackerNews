@@ -9,6 +9,7 @@
 #import "CommentsTableViewController.h"
 #import <Firebase/Firebase.h>
 #import "StoryTableViewCell.h"
+#import "StoryTextViewCell.h"
 #import "NSDate+TimeAgo.h"
 #import "CommentTableViewCell.h"
 
@@ -59,6 +60,9 @@
     UINib *celllNib = [UINib nibWithNibName:@"StoryTableCellView" bundle:nil] ;
     [self.tableView registerNib:celllNib forCellReuseIdentifier:@"storyCell"];
     
+    UINib *cellTextNib = [UINib nibWithNibName:@"StoryTextCellView" bundle:nil] ;
+    [self.tableView registerNib:cellTextNib forCellReuseIdentifier:@"storyTextCell"];
+    
     UINib *commentCellNib = [UINib nibWithNibName:@"CommentTableViewCell" bundle:nil] ;
     [self.tableView registerNib:commentCellNib forCellReuseIdentifier:@"commentsCell"];
     
@@ -87,11 +91,13 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
+        return 1;
+    } else if(section == 1 && ![[self.story valueForKey:@"text"]  isEqual: @""]){
         return 1;
     }
     return self.commentList.count;
@@ -106,13 +112,32 @@
             NSArray* storyObject = [[NSBundle mainBundle] loadNibNamed:@"StoryTableCellView" owner:self options:nil];
             cell = [storyObject firstObject];
         }
-        
+        if (![[self.story valueForKey:@"text"]  isEqual: @""]){
+            cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
+        }
         // Get data from the array at position of the row
         cell.story = self.story;
         [cell layoutIfNeeded];
         [cell setNeedsLayout];
         return cell;
-    } else  {
+    } else if (indexPath.section == 1 && ![[self.story valueForKey:@"text"]  isEqual: @""]){
+       
+            StoryTextViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"storyTextCell" forIndexPath:indexPath];
+            
+            if (cell == nil) {
+                NSArray* storyObject = [[NSBundle mainBundle] loadNibNamed:@"StoryTextCellView" owner:self options:nil];
+                cell = [storyObject firstObject];
+            }
+            
+            // Get data from the array at position of the row
+            cell.story = self.story;
+        
+        
+            [cell layoutIfNeeded];
+            [cell setNeedsLayout];
+            
+        return cell;
+    } else {
         CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentsCell" forIndexPath:indexPath];
         
         if (cell == nil) {
@@ -133,6 +158,9 @@
     if (indexPath.section == 0) {
         NSDictionary *story = self.story;
         return [StoryTableViewCell heightForStory:story];
+    } else if(indexPath.section == 1 && ![[self.story valueForKey:@"text"]  isEqual: @""]) {
+        NSDictionary *story = self.story;
+        return [StoryTextViewCell heightForStory:story];
     }
     NSDictionary *comment = [self.commentList objectAtIndex:indexPath.row];
     return [CommentTableViewCell heightForComment:comment];
