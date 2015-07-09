@@ -13,7 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
-@property (weak, nonatomic) IBOutlet UITextView *commentText;
+//@property (weak, nonatomic) IBOutlet UITextView *commentText;
+@property (weak, nonatomic) IBOutlet UITextView *commentTextView;
 
 @property (strong, nonatomic) NSDictionary *comment;
 

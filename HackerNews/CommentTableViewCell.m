@@ -8,6 +8,7 @@
 
 #import "CommentTableViewCell.h"
 #import "NSDate+TimeAgo.h"
+#import "Utils.h"
 
 @implementation CommentTableViewCell
 
@@ -37,10 +38,11 @@
     
     // Transform HTML into an attributed string
 //    NSAttributedString *stringWithHTMLAttributes = [[NSAttributedString alloc]   initWithFileURL:[comment valueForKey:@"text"] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+    NSAttributedString *attributedString= [Utils convertHTMLToAttributedString:[comment valueForKey:@"text"]];
     
-    //self.commentText.attributedText = [comment valueForKey:@"text"];
+    self.commentTextView.attributedText = attributedString;
     
-    self.commentLabel.text = [comment valueForKey:@"text"];
+    //self.commentLabel.text = [comment valueForKey:@"text"];
 }
 
 + (CGFloat)heightForComment:(NSDictionary *)comment {

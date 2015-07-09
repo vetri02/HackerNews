@@ -37,14 +37,14 @@
     
     
     //TEST
-    NSAssert([self.viewWeb isKindOfClass:[UIWebView class]], @"You webView outlet is not correctly connected.");
-    NSAssert(self.webBack, @"Your back button outlet is not correctly connected");
-    NSAssert(self.refresh, @"Your refresh button outlet is not correctly connected");
-    NSAssert(self.webForward, @"Your forward button outlet is not correctly connected");
-    NSAssert((self.webBack.target == self.viewWeb) && (self.webBack.action = @selector(goBack)), @"Your back button action is not connected to goBack.");
-    NSAssert((self.refresh.target == self.viewWeb) && (self.refresh.action = @selector(reload)), @"Your refresh button action is not connected to reload.");
-    NSAssert((self.webForward.target == self.viewWeb) && (self.webForward.action = @selector(goForward)), @"Your forward button action is not connected to goForward.");
-    NSAssert(self.viewWeb.scalesPageToFit, @"You forgot to check 'Scales Page to Fit' for your web view.");
+//    NSAssert([self.viewWeb isKindOfClass:[UIWebView class]], @"You webView outlet is not correctly connected.");
+//    NSAssert(self.webBack, @"Your back button outlet is not correctly connected");
+//    NSAssert(self.refresh, @"Your refresh button outlet is not correctly connected");
+//    NSAssert(self.webForward, @"Your forward button outlet is not correctly connected");
+//    NSAssert((self.webBack.target == self.viewWeb) && (self.webBack.action = @selector(goBack)), @"Your back button action is not connected to goBack.");
+//    NSAssert((self.refresh.target == self.viewWeb) && (self.refresh.action = @selector(reload)), @"Your refresh button action is not connected to reload.");
+//    NSAssert((self.webForward.target == self.viewWeb) && (self.webForward.action = @selector(goForward)), @"Your forward button action is not connected to goForward.");
+//    NSAssert(self.viewWeb.scalesPageToFit, @"You forgot to check 'Scales Page to Fit' for your web view.");
     
     //self.title = [self.story valueForKey:@"title"];
     //[self.navigationItem.backBarButtonItem setTitle:@" "];
@@ -78,6 +78,14 @@
     
     
     NSLog(@"%@", self.story);
+    
+    if ([self.story valueForKey:@"kids"] && [self.story valueForKey:@"kids"] != [NSNull null] && ![[self.story valueForKey:@"kids"]  isEqual: @""]){
+        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor blackColor]];
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    } else {
+        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor clearColor]];
+        [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    }
     
     self.viewWeb.delegate = self;
     self.viewWeb.progressDelegate = self;

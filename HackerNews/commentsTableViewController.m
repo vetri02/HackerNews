@@ -77,7 +77,7 @@
     Firebase *storyDescriptionRef = [[Firebase alloc] initWithUrl:urlString];
     
     [storyDescriptionRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        if(snapshot.value != [NSNull null]){
+        if(snapshot.value && snapshot.value != [NSNull null] && ![snapshot.value  isEqual: @""] && ![snapshot.value valueForKey:@"deleted"]){
             [self.commentList addObject:snapshot.value];
         }
         self.count++;
@@ -97,7 +97,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return 1;
-    } else if(section == 1 && ![[self.story valueForKey:@"text"]  isEqual: @""]){
+    } else if(section == 1 && [self.story valueForKey:@"text"] && [self.story valueForKey:@"text"] != [NSNull null] && ![[self.story valueForKey:@"text"]  isEqual: @""]){
         return 1;
     }
     return self.commentList.count;
@@ -112,7 +112,7 @@
             NSArray* storyObject = [[NSBundle mainBundle] loadNibNamed:@"StoryTableCellView" owner:self options:nil];
             cell = [storyObject firstObject];
         }
-        if (![[self.story valueForKey:@"text"]  isEqual: @""]){
+        if ([self.story valueForKey:@"text"] && [self.story valueForKey:@"text"] != [NSNull null] && ![[self.story valueForKey:@"text"]  isEqual: @""]){
             cell.separatorInset = UIEdgeInsetsMake(0.f, cell.bounds.size.width, 0.f, 0.f);
         }
         // Get data from the array at position of the row
@@ -120,7 +120,7 @@
         [cell layoutIfNeeded];
         [cell setNeedsLayout];
         return cell;
-    } else if (indexPath.section == 1 && ![[self.story valueForKey:@"text"]  isEqual: @""]){
+    } else if (indexPath.section == 1 && [self.story valueForKey:@"text"] && [self.story valueForKey:@"text"] != [NSNull null] && ![[self.story valueForKey:@"text"]  isEqual: @""]){
        
             StoryTextViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"storyTextCell" forIndexPath:indexPath];
             
@@ -158,7 +158,7 @@
     if (indexPath.section == 0) {
         NSDictionary *story = self.story;
         return [StoryTableViewCell heightForStory:story];
-    } else if(indexPath.section == 1 && ![[self.story valueForKey:@"text"]  isEqual: @""]) {
+    } else if(indexPath.section == 1 && [self.story valueForKey:@"text"] && [self.story valueForKey:@"text"] != [NSNull null] && ![[self.story valueForKey:@"text"]  isEqual: @""]) {
         NSDictionary *story = self.story;
         return [StoryTextViewCell heightForStory:story];
     }
