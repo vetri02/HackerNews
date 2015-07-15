@@ -32,18 +32,7 @@
     
     self.usernameTextField.delegate = self;
     self.passwordTextField.delegate = self;
-//    
-//    self.progressView = [[UIProgressView alloc]
-//                         initWithProgressViewStyle:(UIProgressViewStyleBar)];
-//    self.progressView.center = self.view.center;
-//    self.progressView.progress = 20.0f / 30.0f;
-//    
-//    [self.view addSubview:self.progressView];
-    
-    NSString *fullURL = @"https://github.com/philipl/pifs";
-    NSURL *url = [NSURL URLWithString:fullURL];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [_viewWeb loadRequest:requestObj];
+
     
 }
 

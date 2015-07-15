@@ -36,6 +36,7 @@
     self.viewWeb.scalesPageToFit = YES;
     
     
+    
     //TEST
 //    NSAssert([self.viewWeb isKindOfClass:[UIWebView class]], @"You webView outlet is not correctly connected.");
 //    NSAssert(self.webBack, @"Your back button outlet is not correctly connected");
@@ -79,13 +80,13 @@
     
     NSLog(@"%@", self.story);
     
-    if ([self.story valueForKey:@"kids"] && [self.story valueForKey:@"kids"] != [NSNull null] && ![[self.story valueForKey:@"kids"]  isEqual: @""]){
-        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor blackColor]];
-        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-    } else {
-        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor clearColor]];
-        [self.navigationItem.rightBarButtonItem setEnabled:NO];
-    }
+//    if ([self.story valueForKey:@"kids"] && [self.story valueForKey:@"kids"] != [NSNull null] && ![[self.story valueForKey:@"kids"]  isEqual: @""]){
+//        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor blackColor]];
+//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+//    } else {
+//        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor clearColor]];
+//        [self.navigationItem.rightBarButtonItem setEnabled:NO];
+//    }
     
     self.viewWeb.delegate = self;
     self.viewWeb.progressDelegate = self;

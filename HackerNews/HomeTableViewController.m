@@ -12,6 +12,8 @@
 #import "MBProgressHUD.h"
 #import "NSDate+TimeAgo.h"
 #import "WebViewController.h"
+#import "Reachability.h"
+
 
 
 
@@ -150,8 +152,6 @@
     
     self.navigationController.navigationBar.topItem.title = self.navTitle;
     
-    
-    
     UINib *celllNib = [UINib nibWithNibName:@"StoryTableCellView" bundle:nil] ;
     [self.tableView registerNib:celllNib forCellReuseIdentifier:@"storyCell"];
     
@@ -180,7 +180,33 @@
     [self.refreshControl setTintColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1] /*#cccccc*/];
     //[self.refreshControl setAttributedTitle:string];
     
+    
+
+    // Allocate a reachability object
+    Reachability* reach = [Reachability reachabilityWithHostname:@"https://www.google.com"];
+    
+    // Set the blocks
+    reach.reachableBlock = ^(Reachability*reach)
+    {
+        // keep in mind this is called on a background thread
+        // and if you are updating the UI it needs to happen
+        // on the main thread, like this:
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"REACHABLE!");
+        });
+    };
+    
+    reach.unreachableBlock = ^(Reachability*reach)
+    {
+        NSLog(@"UNREACHABLE!");
+    };
+    
+    // Start the notifier, which will cause the reachability object to retain itself!
+    [reach startNotifier];
 }
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

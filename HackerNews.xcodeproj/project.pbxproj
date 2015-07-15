@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B04B8E01B5533E600B3B65D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B04B8DF1B5533E600B3B65D /* SystemConfiguration.framework */; };
 		1B1B67761B2ACAE4007CD192 /* StoryTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B1B67751B2ACAE4007CD192 /* StoryTableCellView.xib */; };
 		1B1B67791B2AD319007CD192 /* LatestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1B67781B2AD319007CD192 /* LatestTableViewController.m */; };
 		1B1B677C1B2AE22B007CD192 /* JobsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B1B677B1B2AE22B007CD192 /* JobsTableViewController.m */; };
@@ -52,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		118B4724AAFC459102096B90 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B04B8DF1B5533E600B3B65D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1B1B67751B2ACAE4007CD192 /* StoryTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryTableCellView.xib; sourceTree = "<group>"; };
 		1B1B67771B2AD319007CD192 /* LatestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatestTableViewController.h; sourceTree = "<group>"; };
 		1B1B67781B2AD319007CD192 /* LatestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LatestTableViewController.m; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B04B8E01B5533E600B3B65D /* SystemConfiguration.framework in Frameworks */,
 				1B37176B198E27F600FF0B04 /* CoreGraphics.framework in Frameworks */,
 				1B68826E1B0C7C9E00235DF2 /* Fabric.framework in Frameworks */,
 				1B37176D198E27F600FF0B04 /* UIKit.framework in Frameworks */,
@@ -152,6 +155,7 @@
 		1B371767198E27F600FF0B04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B04B8DF1B5533E600B3B65D /* SystemConfiguration.framework */,
 				1B68826C1B0C7C9E00235DF2 /* Fabric.framework */,
 				1B68826D1B0C7C9E00235DF2 /* Crashlytics.framework */,
 				1B371768198E27F600FF0B04 /* Foundation.framework */,

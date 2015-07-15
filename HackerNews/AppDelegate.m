@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "Reachability.h"
 
 
 @implementation AppDelegate
@@ -19,6 +20,11 @@
 {
     // Override point for customization after application launch.
     [Fabric with:@[CrashlyticsKit]];
+    
+    
+    
+
+    
     return YES;
 }
 							
