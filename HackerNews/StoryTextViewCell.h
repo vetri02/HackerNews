@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface StoryTextViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *textCell;
+//@property (weak, nonatomic) IBOutlet UILabel *textCell;
+@property (weak, nonatomic) IBOutlet UITextView *storyText;
 
 @property (strong, nonatomic) NSDictionary *story;
 

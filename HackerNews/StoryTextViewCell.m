@@ -7,6 +7,7 @@
 //
 
 #import "StoryTextViewCell.h"
+#import "Utils.h"
 
 @implementation StoryTextViewCell
 
@@ -21,12 +22,15 @@
     } else if([[story valueForKey:@"text"]  isEqual: @""]){
     
     } else {
-        self.textCell.text = [story valueForKey:@"text"];
+        NSAttributedString *attributedString= [Utils convertHTMLToAttributedString:[story valueForKey:@"text"]];
+        
+        self.storyText.attributedText = attributedString;
+        //self.textCell.text = [story valueForKey:@"text"];
         
         self.accessoryType = UITableViewCellAccessoryNone;
         
-        self.textCell.numberOfLines = 0;
-        [self.textCell sizeToFit];
+        //self.storyText.numberOfLines = 0;
+        [self.storyText sizeToFit];
     }
 }
 
@@ -37,18 +41,22 @@
     
     //its not possible to get the cell label width since this method is called before cellForRow so best we can do
     //is get the table width and subtract the default extra space on either side of the label.
-    CGSize constraintSize = CGSizeMake(300 - 30, MAXFLOAT);
+    const CGFloat leadingSpace = 44;
+    const CGFloat trailingSpace = 10;
+    CGSize constraintSize = CGSizeMake(320 - leadingSpace - trailingSpace, MAXFLOAT);
     
     CGRect rect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
     
-    //NSLog(@"Output is: \"%d\"", rect.size.height);
     
     //Add back in the extra padding above and below label on table cell.
-    rect.size.height = rect.size.height;
+    const CGFloat topSpaceToSuperView = 37;
+    const CGFloat bottomSpaceToSuperView = 50;
+    rect.size.height = rect.size.height + topSpaceToSuperView + bottomSpaceToSuperView;
     
     //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
     
     return rect.size.height;
+
 }
 
 @end
