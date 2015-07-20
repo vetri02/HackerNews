@@ -43,15 +43,16 @@
     self.navigationItem.hidesBackButton=YES;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0,0,36,30);
-    [button setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    button.frame = CGRectMake(0,0,13.5,23);
+    [button setBackgroundImage:[UIImage imageNamed:@"Safari Back White"] forState:UIControlStateNormal];
     
-    [button setTitle:@"Back" forState:UIControlStateNormal];
-    [button.titleLabel setFont:[UIFont fontWithName:@"Avenir-Heavy" size:16.0f]];
+    //    [button setTitle:@"" forState:UIControlStateNormal];
+    //    [button.titleLabel setFont:[UIFont fontWithName:@"Avenir-Heavy" size:16.0f]];
     
     [button addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     [self.navigationItem setLeftBarButtonItem:barButtonItem];
+
     
     
     self.temporaryCommentsIds = [self.story valueForKey:@"kids"];

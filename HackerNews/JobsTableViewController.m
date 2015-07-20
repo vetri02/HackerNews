@@ -8,6 +8,7 @@
 
 #import "JobsTableViewController.h"
 #import "WebViewController.h"
+#import "CommentsTableViewController.h"
 
 @interface JobsTableViewController ()
 - (IBAction)refresh:(UIRefreshControl *)sender;
@@ -32,10 +33,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
-    //NSString *fullURL = [story valueForKey:@"url"];
-    //if(indexPath.row == 0) {
-    [self performSegueWithIdentifier:@"jobstoWebView" sender:story];
-    //}
+    NSString *urlString = [story valueForKey:@"url"];
+    if(urlString.length > 0) {
+        [self performSegueWithIdentifier:@"jobstoWebView" sender:story];
+    } else {
+        [self performSegueWithIdentifier:@"jobsToComments" sender:story];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -45,6 +48,9 @@
     {
         //if you need to pass data to the next controller do it here
         WebViewController *controller = segue.destinationViewController;
+        controller.story = sender;
+    }else if([[segue identifier] isEqualToString:@"jobsToComments"]) {
+        CommentsTableViewController *controller = segue.destinationViewController;
         controller.story = sender;
     }
 }

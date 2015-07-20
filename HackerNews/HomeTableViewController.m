@@ -12,6 +12,7 @@
 #import "MBProgressHUD.h"
 #import "NSDate+TimeAgo.h"
 #import "WebViewController.h"
+#import "CommentsTableViewController.h"
 #import "Reachability.h"
 
 
@@ -254,10 +255,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *story = [self.storiesArray objectAtIndex:indexPath.row];
-    //NSString *fullURL = [story valueForKey:@"url"];
-    //if(indexPath.row == 0) {
-    [self performSegueWithIdentifier:@"topStoriestoWebView" sender:story];
-    //}
+    NSString *urlString = [story valueForKey:@"url"];
+    if(urlString.length > 0) {
+        [self performSegueWithIdentifier:@"topStoriestoWebView" sender:story];
+    } else {
+        [self performSegueWithIdentifier:@"topStoriesToComments" sender:story];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -267,6 +270,9 @@
     {
         //if you need to pass data to the next controller do it here
         WebViewController *controller = segue.destinationViewController;
+        controller.story = sender;
+    } else if([[segue identifier] isEqualToString:@"topStoriesToComments"]) {
+        CommentsTableViewController *controller = segue.destinationViewController;
         controller.story = sender;
     }
 }

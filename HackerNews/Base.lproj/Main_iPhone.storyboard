@@ -157,7 +157,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="fnA-Bg-GpQ" kind="push" identifier="LatestToComments" id="FzI-He-X0n"/>
+                                    <segue destination="fnA-Bg-GpQ" kind="push" identifier="latestToComments" id="FzI-He-X0n"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -433,7 +433,7 @@
                         <viewControllerLayoutGuide type="bottom" id="SXX-Ir-wgT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G8O-2L-Orm">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZJY-Zr-hTg">
@@ -484,10 +484,10 @@
                     <navigationItem key="navigationItem" title="File system that stores location of file in Pi" id="bZM-O2-6k1">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="JWb-tA-dAw">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iXV-h3-NUY">
-                                <rect key="frame" x="224" y="3" width="90" height="37"/>
+                                <rect key="frame" x="214" y="3" width="28" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
-                                <state key="normal" title="Comments">
+                                <state key="normal" image="webComments">
                                     <color key="titleColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -512,7 +512,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RB2-OL-R7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3683" y="144"/>
+            <point key="canvasLocation" x="3683" y="143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dgc-WQ-nWz">
@@ -559,6 +559,7 @@
         <image name="story" width="26" height="26"/>
         <image name="userFull" width="20" height="21"/>
         <image name="userLine" width="21" height="22"/>
+        <image name="webComments" width="28" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -566,8 +567,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="05X-Ed-HDg"/>
-        <segue reference="qBj-4v-4gv"/>
+        <segue reference="MQs-EZ-GAP"/>
+        <segue reference="oCu-gc-rpo"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.91764705882352937" green="0.30196078431372547" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
 </document>

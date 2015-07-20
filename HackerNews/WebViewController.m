@@ -47,26 +47,30 @@
 //    NSAssert((self.webForward.target == self.viewWeb) && (self.webForward.action = @selector(goForward)), @"Your forward button action is not connected to goForward.");
 //    NSAssert(self.viewWeb.scalesPageToFit, @"You forgot to check 'Scales Page to Fit' for your web view.");
     
-    //self.title = [self.story valueForKey:@"title"];
-    //[self.navigationItem.backBarButtonItem setTitle:@" "];
-    //self.navigationController.toolbarHidden = NO;
+    
+    
     self.navigationItem.hidesBackButton=YES;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0,0,36,30);
-    [button setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    button.frame = CGRectMake(0,0,13.5,23);
+    [button setBackgroundImage:[UIImage imageNamed:@"Safari Back White"] forState:UIControlStateNormal];
     
-    [button setTitle:@"Back" forState:UIControlStateNormal];
-    [button.titleLabel setFont:[UIFont fontWithName:@"Avenir-Heavy" size:16.0f]];
+//    [button setTitle:@"" forState:UIControlStateNormal];
+//    [button.titleLabel setFont:[UIFont fontWithName:@"Avenir-Heavy" size:16.0f]];
     
     [button addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     [self.navigationItem setLeftBarButtonItem:barButtonItem];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320-20, 44)];
+    
+    
+    
+
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320-10, 44)];
     titleLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     //titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont fontWithName:@"Avenir-Light" size:16.0f];
+    titleLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:14.0f];
     //titleLabel.shadowColor = [UIColor colorWithWhite:0 alpha:0.5];
     titleLabel.text = [self.story valueForKey:@"title"];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -74,19 +78,23 @@
     
     self.navigationItem.titleView = titleLabel;
     
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
-                                                         forBarMetrics:UIBarMetricsDefault];
+//    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-10, -10)
+//                                                         forBarMetrics:UIBarMetricsDefault];
     
-    
+
     NSLog(@"%@", self.story);
     
-//    if ([self.story valueForKey:@"kids"] && [self.story valueForKey:@"kids"] != [NSNull null] && ![[self.story valueForKey:@"kids"]  isEqual: @""]){
-//        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor blackColor]];
-//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-//    } else {
-//        [self.navigationItem.rightBarButtonItem setTintColor:[UIColor clearColor]];
-//        [self.navigationItem.rightBarButtonItem setEnabled:NO];
-//    }
+    if ([self.story valueForKey:@"kids"] && [self.story valueForKey:@"kids"] != [NSNull null] && ![[self.story valueForKey:@"kids"]  isEqual: @""]){
+        //[self.navigationItem.rightBarButtonItem setTintColor:[UIColor blackColor]];
+        self.navigationItem.rightBarButtonItem.title = @"Comments";
+        
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    } else {
+        //[self.navigationItem.rightBarButtonItem setTintColor:[UIColor clearColor]];
+        self.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem.title = @"";
+        [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    }
     
     self.viewWeb.delegate = self;
     self.viewWeb.progressDelegate = self;
@@ -94,7 +102,7 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
     
-     [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"AvenirNext-Medium" size:16.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
+     [[UIBarButtonItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"AvenirNext-Medium" size:14.0f], NSFontAttributeName, nil] forState:UIControlStateNormal];
     
 }
 
