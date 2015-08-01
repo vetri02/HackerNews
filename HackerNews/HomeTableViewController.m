@@ -83,6 +83,8 @@
         //[listStories addObject:(snapshot.value)];
     } withCancelBlock:^(NSError *error) {
         NSLog(@"%@", error.description);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hacker News" message:@"Error Fetching Stories." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }];
     
 }
@@ -139,7 +141,8 @@
         
         
     } withCancelBlock:^(NSError *error) {
-        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hacker News" message:@"Error Fetching Stories." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }
      ];
 }
@@ -158,6 +161,20 @@
     
     [self getTopStories];
     
+    //// Color Declarations
+    UIColor* color3 = [UIColor colorWithRed: 0.471 green: 0.471 blue: 0.471 alpha: 1];
+    
+    //// Oval Drawing
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(75, 19, 30, 30)];
+    [color3 setFill];
+    [ovalPath fill];
+    
+    
+    //// Oval 2 Drawing
+    UIBezierPath* oval2Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(84, 20, 12, 12)];
+    [UIColor.whiteColor setFill];
+    [oval2Path fill];
+
     
     if(HUD!=nil)
     {
@@ -195,7 +212,7 @@
     
 
     // Allocate a reachability object
-    Reachability* reach = [Reachability reachabilityWithHostname:@"https://www.google.com"];
+    Reachability* reach = [Reachability reachabilityForInternetConnection];
     
     // Set the blocks
     reach.reachableBlock = ^(Reachability*reach)
@@ -211,7 +228,14 @@
     
     reach.unreachableBlock = ^(Reachability*reach)
     {
-        NSLog(@"UNREACHABLE!");
+        if (!reach.isReachable) {
+
+            NSLog(@"UNREACHABLE!");
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hacker News" message:@"No internet connection." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        });
     };
     
     // Start the notifier, which will cause the reachability object to retain itself!

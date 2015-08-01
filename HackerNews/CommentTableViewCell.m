@@ -51,11 +51,23 @@
     
     // Transform HTML into an attributed string
 //    NSAttributedString *stringWithHTMLAttributes = [[NSAttributedString alloc]   initWithFileURL:[comment valueForKey:@"text"] options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+//    NSString *testString = [NSString stringWithFormat:@"%@", ];
     NSAttributedString *attributedString= [Utils convertHTMLToAttributedString:[comment valueForKey:@"text"]];
     
     self.commentTextView.attributedText = attributedString;
     
     //self.commentLabel.text = [comment valueForKey:@"text"];
+    NSInteger level = [[self.comment objectForKey:@"level"] integerValue];
+    self.imageLeadingSpacing.constant = 19 * level;
+    self.textLeadingSpacing.constant = 11 * level;
+    [self layoutIfNeeded];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    if (self.urlDelegate) {
+        [self.urlDelegate openUrl:URL];
+    }
+    return NO;
 }
 
 + (CGFloat)heightForComment:(NSDictionary *)comment {
@@ -65,7 +77,7 @@
     
     //its not possible to get the cell label width since this method is called before cellForRow so best we can do
     //is get the table width and subtract the default extra space on either side of the label.
-    const CGFloat leadingSpace = 44;
+    const CGFloat leadingSpace = 44 + (11 * [[comment objectForKey:@"level"] integerValue] - 1);
     const CGFloat trailingSpace = 10;
     CGSize constraintSize = CGSizeMake(320 - leadingSpace - trailingSpace, MAXFLOAT);
     
@@ -79,7 +91,7 @@
     
     //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
     
-    return rect.size.height;
+    return rect.size.height+10;
 }
 
 @end

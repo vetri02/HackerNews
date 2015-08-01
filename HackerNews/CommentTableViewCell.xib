@@ -43,11 +43,22 @@
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHl-40-q4W">
                         <rect key="frame" x="19" y="37" width="292" height="100"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="s3o-uc-l79"/>
+                        </constraints>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="s3o-uc-l79"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outlet property="delegate" destination="JlN-rQ-9j1" id="64V-a8-Yxa"/>
+                        </connections>
                     </textView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CommentTableCell" translatesAutoresizingMaskIntoConstraints="NO" id="9yq-1M-rtP">
                         <rect key="frame" x="275" y="145" width="36" height="30"/>
@@ -103,6 +114,8 @@
                 <outlet property="childCommentBGImage" destination="9yq-1M-rtP" id="xDa-PG-vLD"/>
                 <outlet property="childCommentCount" destination="rf7-29-jVn" id="4KO-bt-ycZ"/>
                 <outlet property="commentTextView" destination="MHl-40-q4W" id="bka-v6-tts"/>
+                <outlet property="imageLeadingSpacing" destination="qEe-BU-fKu" id="ANx-cX-sQN"/>
+                <outlet property="textLeadingSpacing" destination="EUn-Mk-oWD" id="jJo-D2-y60"/>
                 <outlet property="timeLabel" destination="yFf-ns-OMY" id="ujh-I9-WzT"/>
                 <outlet property="userLabel" destination="ulc-20-Knj" id="0vL-i8-fSz"/>
             </connections>

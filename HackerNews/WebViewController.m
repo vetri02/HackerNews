@@ -32,7 +32,7 @@
     NSURL *url = [NSURL URLWithString:[self.story valueForKey:@"url"]];
     NSURLRequest *requestObject = [NSURLRequest requestWithURL:url];
     [self.viewWeb loadRequest:requestObject];
-    
+    self.viewWeb.delegate = self;
     self.viewWeb.scalesPageToFit = YES;
     
     
@@ -106,8 +106,9 @@
     
 }
 
-//- (void)webViewDidFinishLoad:(UIWebView *)theWebView
-//{
+- (void)webViewDidFinishLoad:(UIWebView *)theWebView
+{
+    NSLog(@"finished loading");
 //    CGSize contentSize = theWebView.scrollView.contentSize;
 //    CGSize viewSize = self.view.bounds.size;
 //    
@@ -116,7 +117,7 @@
 //    theWebView.scrollView.minimumZoomScale = rw;
 //    theWebView.scrollView.maximumZoomScale = rw;
 //    theWebView.scrollView.zoomScale = rw;
-//}
+}
 
 #pragma mark - NJKWebViewProgressDelegate
 
