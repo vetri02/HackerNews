@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
 //@property (weak, nonatomic) IBOutlet UITextView *commentText;
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
+@property (weak, nonatomic) IBOutlet UILabel *childCommentCount;
+@property (weak, nonatomic) IBOutlet UIImageView *childCommentBGImage;
 
 @property (strong, nonatomic) NSDictionary *comment;
 

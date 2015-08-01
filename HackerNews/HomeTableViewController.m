@@ -158,6 +158,14 @@
     
     [self getTopStories];
     
+    
+    if(HUD!=nil)
+    {
+        [HUD hide:YES];
+        [HUD removeFromSuperViewOnHide];
+        HUD = nil;
+    }
+    
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     //HUD.labelText = @"Fetching Stories";
     HUD.detailsLabelText = self.loadMsg;
@@ -167,7 +175,10 @@
     
     //self.title = @"Top Stories";
     
+    [HUD hide:YES];
+    
     [self.view addSubview:HUD];
+
     [HUD show:YES];
     
     

@@ -30,6 +30,7 @@
 		1B6882651B0B7BE700235DF2 /* StoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */; };
 		1B68826E1B0C7C9E00235DF2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B68826C1B0C7C9E00235DF2 /* Fabric.framework */; };
 		1B68826F1B0C7C9E00235DF2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B68826D1B0C7C9E00235DF2 /* Crashlytics.framework */; };
+		1B7091871B63DA8C0036F1F6 /* CommentsTableViewCellSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7091861B63DA8C0036F1F6 /* CommentsTableViewCellSmall.xib */; };
 		1B7CA6EA1B32063500393B3F /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CA6E81B32063500393B3F /* CommentTableViewCell.m */; };
 		1B7CA6EB1B32063500393B3F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */; };
 		1B906AE81A94AEC000AAF25D /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B906AE71A94AEC000AAF25D /* HomeTableViewController.m */; };
@@ -86,6 +87,7 @@
 		1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryTableViewCell.m; sourceTree = "<group>"; };
 		1B68826C1B0C7C9E00235DF2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		1B68826D1B0C7C9E00235DF2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		1B7091861B63DA8C0036F1F6 /* CommentsTableViewCellSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsTableViewCellSmall.xib; sourceTree = "<group>"; };
 		1B7CA6E71B32063500393B3F /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
 		1B7CA6E81B32063500393B3F /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				1B7CA6E71B32063500393B3F /* CommentTableViewCell.h */,
 				1B7CA6E81B32063500393B3F /* CommentTableViewCell.m */,
 				1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */,
+				1B7091861B63DA8C0036F1F6 /* CommentsTableViewCellSmall.xib */,
 				1B371783198E27F600FF0B04 /* Images.xcassets */,
 				1B37176F198E27F600FF0B04 /* Supporting Files */,
 			);
@@ -338,6 +341,7 @@
 				1B7CA6EB1B32063500393B3F /* CommentTableViewCell.xib in Resources */,
 				1B37177C198E27F600FF0B04 /* Main_iPhone.storyboard in Resources */,
 				1B371773198E27F600FF0B04 /* InfoPlist.strings in Resources */,
+				1B7091871B63DA8C0036F1F6 /* CommentsTableViewCellSmall.xib in Resources */,
 				1B1B67761B2ACAE4007CD192 /* StoryTableCellView.xib in Resources */,
 				1B9262101B4BEED100358E1C /* StoryTextCellView.xib in Resources */,
 			);

@@ -67,6 +67,9 @@
     UINib *commentCellNib = [UINib nibWithNibName:@"CommentTableViewCell" bundle:nil] ;
     [self.tableView registerNib:commentCellNib forCellReuseIdentifier:@"commentsCell"];
     
+    UINib *commentCellSmallNib = [UINib nibWithNibName:@"CommentTableViewCellSmall" bundle:nil] ;
+    [self.tableView registerNib:commentCellNib forCellReuseIdentifier:@"commentsCellSmall"];
+    
     for(NSNumber *itemNumber in self.temporaryCommentsIds){
         [self getStoryDataOfItem:itemNumber];
     }
@@ -79,7 +82,18 @@
     
     [storyDescriptionRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if(snapshot.value && snapshot.value != [NSNull null] && ![snapshot.value  isEqual: @""] && ![snapshot.value valueForKey:@"deleted"]){
-            [self.commentList addObject:snapshot.value];
+            NSMutableDictionary *comment = [NSMutableDictionary dictionaryWithDictionary:snapshot.value];
+            [comment setObject:@(1) forKey:@"level"];
+            [self.commentList addObject:comment];
+            
+            NSLog(@"%@", snapshot.value);
+            
+//            [self.tableView beginUpdates];
+//            [self.commentList addObject:snapshot.value];
+//            NSInteger row = self.temporaryCommentsIds.count - 1;
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+//            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//            [self.tableView endUpdates];
         }
         self.count++;
         if (self.count == self.temporaryCommentsIds.count) {
@@ -152,6 +166,26 @@
         
         return cell;
     }
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[CommentTableViewCell class]]) {
+        CommentTableViewCell *commentCell = (CommentTableViewCell *)cell;
+        NSLog(@"%@", commentCell.comment);
+        // downloadKidForComment:comment
+    }
+    
+    
+}
+
+- (void)downloadKidsForComment:(NSDictionary *)comment {
+    // show loader
+    // donwload kids
+    // callback:
+    // insert kid comment after parent
+    // set level value to kid comment
+    // hide loader
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

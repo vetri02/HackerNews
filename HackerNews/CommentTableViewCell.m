@@ -28,11 +28,24 @@
     }
     _comment = comment;
     
+    //Get Comments count
+    NSMutableArray *commentArray = [comment valueForKey:@"kids"];
+    NSUInteger commentCount = [commentArray count];
+    NSString *commentCountText = [NSString stringWithFormat:@"%@",  @(commentCount)];
+    
     NSTimeInterval timeSince = [[comment valueForKey:@"time"] doubleValue];
     NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970: timeSince];
     NSString *ago = [date timeAgo];
     self.timeLabel.text = ago;
     self.userLabel.text = [comment valueForKey:@"by"];
+    self.childCommentCount.text = @"";
+    self.childCommentBGImage.hidden = YES;
+    
+    if(commentCount != 0){
+        self.childCommentCount.text = [NSString stringWithFormat:@"%@", commentCountText];
+        self.childCommentBGImage.hidden = NO;
+    }
+
     
     
     
