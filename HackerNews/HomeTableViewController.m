@@ -134,7 +134,12 @@
         }
         
         self.counter++;
-        HUD.progress = (float)self.counter / self.temporaryTop500StoriesIds.count;
+        
+        float progress = (float)self.counter / self.temporaryTop500StoriesIds.count;
+        
+        if(progress > 0.1){
+            HUD.progress = progress;
+        }
         if (self.counter == (self.temporaryTop500StoriesIds.count-3)) {
             [HUD hide:YES];
         }
@@ -187,6 +192,7 @@
     //HUD.labelText = @"Fetching Stories";
     HUD.detailsLabelText = self.loadMsg;
     HUD.mode = MBProgressHUDModeDeterminate;
+    HUD.progress = 0.1;
     
     //    [HUD showWhileExecuting:@selector(doSomeFunkyStuff) onTarget:self withObject:nil animated:YES];
     

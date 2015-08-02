@@ -58,8 +58,16 @@
     [button addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     [self.navigationItem setLeftBarButtonItem:barButtonItem];
-
     
+    UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc]
+                                   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    [ac startAnimating];
+    ac.frame = CGRectMake(0, 0, 320, 144);
+    [view addSubview:ac]; // <-- Your UIActivityIndicatorView
+    
+    self.tableView.tableFooterView = view;
     
     self.temporaryCommentsIds = [self.story valueForKey:@"kids"];
 
@@ -90,11 +98,24 @@
         if(snapshot.value && snapshot.value != [NSNull null] && ![snapshot.value  isEqual: @""] && ![snapshot.value valueForKey:@"deleted"]){
             NSMutableDictionary *comment = [NSMutableDictionary dictionaryWithDictionary:snapshot.value];
             if (parentComment) {
+                
                 NSInteger parentLevel = [[parentComment objectForKey:@"level"] integerValue];
                 NSInteger level = parentLevel + 1;
                 [comment setObject:@(level) forKey:@"level"];
                 NSInteger index = [self.commentList indexOfObject:parentComment];
                 [self.commentList insertObject:comment atIndex:index+1];
+                
+//                [self.tableView beginUpdates];
+//                [self.commentList insertObject:comment atIndex:index+1];
+//
+//                NSInteger row = [[parentComment objectForKey:@"kids"] integerValue] - 1;
+//                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:2];
+//                if([self.story valueForKey:@"text"] && [self.story valueForKey:@"text"] != [NSNull null] && ![[self.story valueForKey:@"text"]  isEqual: @""]){
+//                        indexPath = [NSIndexPath indexPathForRow:row inSection:3];
+//                }
+//                [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//                [self.tableView endUpdates];
+            
             } else {
                 [comment setObject:@(1) forKey:@"level"];
                 [self.commentList addObject:comment];
@@ -127,6 +148,7 @@
                 
                 self.commentList = [NSMutableArray arrayWithArray:self.sortedCommentList];
                 //NSLog(@"%@", sortedSocialPosts);
+                
                 [self.tableView reloadData];
             }
         }
