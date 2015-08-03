@@ -91,7 +91,7 @@
     
     //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
     
-    return rect.size.height+10;
+    return rect.size.height + 10;
 }
 
 @end

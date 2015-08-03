@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *webForward;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *share;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refresh;
+@property (nonatomic, strong) NSDictionary *setStory;
 - (IBAction)webShare:(id)sender;
 
 
@@ -27,8 +28,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
     // Load web page
     //NSString *fullURL = @"http://designcode.io";
+    self.setStory = self.story;
     NSURL *url = [NSURL URLWithString:[self.story valueForKey:@"url"]];
     NSURLRequest *requestObject = [NSURLRequest requestWithURL:url];
     [self.viewWeb loadRequest:requestObject];
@@ -163,8 +166,8 @@
 }
 
 - (IBAction)webShare:(id)sender {
-    NSString *textToShare = [self.story valueForKey:@"title"];
-    NSURL *myWebsite = [NSURL URLWithString:[self.story valueForKey:@"url"]];
+    NSString *textToShare = [self.setStory valueForKey:@"title"];
+    NSURL *myWebsite = [NSURL URLWithString:[self.setStory valueForKey:@"url"]];
     
     NSArray *objectsToShare = @[textToShare, myWebsite];
     

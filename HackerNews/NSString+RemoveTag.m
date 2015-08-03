@@ -5,6 +5,7 @@
 //  Created by Vetrichelvan on 09/07/15.
 //  Copyright (c) 2015 Vetrichelvan. All rights reserved.
 //
+// Credits - https://github.com/bonzoq/hniosreader
 
 #import "NSString+RemoveTag.h"
 
