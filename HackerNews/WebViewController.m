@@ -112,6 +112,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView
 {
     NSLog(@"finished loading");
+//    // Enable or disable back
+//    [self.webBack setEnabled:[self.viewWeb canGoBack]];
+//    
+//    // Enable or disable forward
+//    [self.webForward setEnabled:[self.viewWeb canGoForward]];
 //    CGSize contentSize = theWebView.scrollView.contentSize;
 //    CGSize viewSize = self.view.bounds.size;
 //    
@@ -120,6 +125,16 @@
 //    theWebView.scrollView.minimumZoomScale = rw;
 //    theWebView.scrollView.maximumZoomScale = rw;
 //    theWebView.scrollView.zoomScale = rw;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    NSLog(@"start loading");
+    
+    // Enable or disable back
+    [self.webBack setEnabled:[self.viewWeb canGoBack]];
+    
+    // Enable or disable forward
+    [self.webForward setEnabled:[self.viewWeb canGoForward]];
 }
 
 #pragma mark - NJKWebViewProgressDelegate
