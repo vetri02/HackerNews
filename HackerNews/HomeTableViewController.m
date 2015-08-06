@@ -166,19 +166,28 @@
     
     [self getTopStories];
     
-    //// Color Declarations
-    UIColor* color3 = [UIColor colorWithRed: 0.471 green: 0.471 blue: 0.471 alpha: 1];
+//    //// Color Declarations
+//    UIColor* color3 = [UIColor colorWithRed: 0.471 green: 0.471 blue: 0.471 alpha: 1];
+//    
+//    //// Oval Drawing
+//    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(75, 19, 30, 30)];
+//    [color3 setFill];
+//    [ovalPath fill];
+//    
+//    
+//    //// Oval 2 Drawing
+//    UIBezierPath* oval2Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(84, 20, 12, 12)];
+//    [UIColor.whiteColor setFill];
+//    [oval2Path fill];
     
-    //// Oval Drawing
-    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(75, 19, 30, 30)];
-    [color3 setFill];
-    [ovalPath fill];
+    NSURL *scriptUrl = [NSURL URLWithString:@"http://apps.wegenerlabs.com/hi.html"];
+    NSData *data = [NSData dataWithContentsOfURL:scriptUrl];
+    if (data){
+        NSLog(@"Device is connected to the internet");
+    }else{
+        NSLog(@"Device is not connected to the internet");
+    }
     
-    
-    //// Oval 2 Drawing
-    UIBezierPath* oval2Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(84, 20, 12, 12)];
-    [UIColor.whiteColor setFill];
-    [oval2Path fill];
 
     
     if(HUD!=nil)
@@ -227,9 +236,9 @@
         // and if you are updating the UI it needs to happen
         // on the main thread, like this:
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"REACHABLE!");
-        });
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            NSLog(@"REACHABLE!");
+//        });
     };
     
     reach.unreachableBlock = ^(Reachability*reach)

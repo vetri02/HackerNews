@@ -109,6 +109,20 @@
     
 }
 
+-(void)viewDidDisappear:(BOOL)animated {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    if (self.isViewLoaded && !self.view.window) {
+        self.view = nil;
+    }
+    
+    
+    // Do additional cleanup if necessary
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView
 {
     NSLog(@"finished loading");
@@ -175,10 +189,7 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 
 - (IBAction)commentsButton:(UIButton *)sender {
