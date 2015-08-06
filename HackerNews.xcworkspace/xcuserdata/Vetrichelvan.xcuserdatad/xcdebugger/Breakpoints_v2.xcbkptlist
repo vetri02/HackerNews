@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HackerNews/WebViewController.m"
-            timestampString = "460316110.835674"
+            timestampString = "460489988.534015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-webShare:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HackerNews/CommentsTableViewController.m"
-            timestampString = "460305668.631559"
+            timestampString = "460568943.933012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HackerNews/WebViewController.m"
-            timestampString = "460316110.835674"
+            timestampString = "460489988.534015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "-webShare:"
             landmarkType = "5">
          </BreakpointContent>

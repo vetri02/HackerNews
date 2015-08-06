@@ -23,6 +23,9 @@
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, assign) NSInteger kidscount;
 @property (nonatomic, strong) NSMutableArray *selectedComments;
+@property (nonatomic, strong) UIView *acview;
+@property (nonatomic, strong) UIActivityIndicatorView *ac;
+@property (nonatomic, assign) BOOL loader;
 
 @end
 
@@ -59,15 +62,20 @@
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     [self.navigationItem setLeftBarButtonItem:barButtonItem];
     
-    UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc]
-                                   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    [ac startAnimating];
-    ac.frame = CGRectMake(0, 0, 320, 144);
-    [view addSubview:ac]; // <-- Your UIActivityIndicatorView
     
-    self.tableView.tableFooterView = view;
+    self.loader = YES;
+    
+    self.ac = [[UIActivityIndicatorView alloc]
+               initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    self.acview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    [self.ac startAnimating];
+    self.ac.frame = CGRectMake(0, 0, 320, 144);
+    [self.acview addSubview:self.ac]; // <-- Your UIActivityIndicatorView
+    
+    self.tableView.tableFooterView = self.acview;
+    
+    
     
     self.temporaryCommentsIds = [self.story valueForKey:@"kids"];
 
@@ -134,7 +142,11 @@
             self.kidscount++;
             NSArray *kidsArr = [parentComment objectForKey:@"kids"];
             if(self.kidscount == kidsArr.count){
+                self.loader = NO;
                 [self.tableView reloadData];
+                //[self.acview removeFromSuperview];
+                
+                //self.tableView.tableFooterView.hidden = YES;
                 self.kidscount = 0;
             }
         } else {
@@ -148,7 +160,8 @@
                 
                 self.commentList = [NSMutableArray arrayWithArray:self.sortedCommentList];
                 //NSLog(@"%@", sortedSocialPosts);
-                
+                self.loader = NO;
+                self.tableView.tableFooterView = nil;
                 [self.tableView reloadData];
             }
         }
@@ -157,6 +170,23 @@
         
     }];
 }
+
+//- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    
+//    if(self.loader == YES){
+//        if(!self.acview){
+//            
+//            
+//            return self.acview;
+//        }
+//        
+//    }
+//    return nil;
+//}
+
+
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if([self.story valueForKey:@"text"] && [self.story valueForKey:@"text"] != [NSNull null] && ![[self.story valueForKey:@"text"]  isEqual: @""]){

@@ -112,6 +112,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView
 {
     NSLog(@"finished loading");
+    self.progressView.hidden = YES;
+    CGRect frame = self.viewWeb.frame;
+    frame.origin.y=0;//pass the cordinate which you want
+    self.viewWeb.frame= frame;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 //    // Enable or disable back
 //    [self.webBack setEnabled:[self.viewWeb canGoBack]];
 //    
@@ -153,6 +158,20 @@
         [self.progressView setProgress:progress animated:YES];
     }
     
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        // Reset state for new page load
+        self.progressView.hidden = NO;
+        CGRect frame = self.viewWeb.frame;
+        frame.origin.y=2;//pass the cordinate which you want
+        self.viewWeb.frame= frame;
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        [self.progressView setProgress:0 animated:YES];
+    }
+    
+    return YES;
 }
 
 

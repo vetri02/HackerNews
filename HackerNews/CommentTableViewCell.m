@@ -87,22 +87,18 @@
     
     CGRect rect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
     
-    
+    NSLog(@"%@", NSStringFromCGRect(rect));
     //Add back in the extra padding above and below label on table cell.
-    const CGFloat topSpaceToSuperView = 37;
-    
-//    if([[comment valueForKey:@"kids"] count] != 0){
-//       const CGFloat bottomSpaceToSuperViewCons = 50;
-//        rect.size.height = rect.size.height + topSpaceToSuperView + bottomSpaceToSuperViewCons;
-//    } else {
-        const CGFloat bottomSpaceToSuperView = 50;
+    if(rect.size.height < 100){
+        const CGFloat topSpaceToSuperView = 40;
+        const CGFloat bottomSpaceToSuperView = 55;
         rect.size.height = rect.size.height + topSpaceToSuperView + bottomSpaceToSuperView;
-//    }
+    }
     
     
     //if height is smaller than a normal row set it to the normal cell height, otherwise return the bigger dynamic height.
     
-    return rect.size.height + 10;
+    return rect.size.height;
 }
 
 @end
