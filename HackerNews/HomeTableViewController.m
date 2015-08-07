@@ -13,7 +13,7 @@
 #import "NSDate+TimeAgo.h"
 #import "WebViewController.h"
 #import "CommentsTableViewController.h"
-#import "Reachability.h"
+//#import "Reachability.h"
 
 
 
@@ -226,35 +226,35 @@
     
     
 
-    // Allocate a reachability object
-    Reachability* reach = [Reachability reachabilityForInternetConnection];
-    
-    // Set the blocks
-    reach.reachableBlock = ^(Reachability*reach)
-    {
-        // keep in mind this is called on a background thread
-        // and if you are updating the UI it needs to happen
-        // on the main thread, like this:
-        
+//    // Allocate a reachability object
+//    Reachability* reach = [Reachability reachabilityForInternetConnection];
+//    
+//    // Set the blocks
+//    reach.reachableBlock = ^(Reachability*reach)
+//    {
+//        // keep in mind this is called on a background thread
+//        // and if you are updating the UI it needs to happen
+//        // on the main thread, like this:
+//        
+////        dispatch_async(dispatch_get_main_queue(), ^{
+////            NSLog(@"REACHABLE!");
+////        });
+//    };
+//    
+//    reach.unreachableBlock = ^(Reachability*reach)
+//    {
+//        if (!reach.isReachable) {
+//
+//            NSLog(@"UNREACHABLE!");
+//        }
 //        dispatch_async(dispatch_get_main_queue(), ^{
-//            NSLog(@"REACHABLE!");
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hacker News" message:@"No internet connection." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//            [alert show];
 //        });
-    };
-    
-    reach.unreachableBlock = ^(Reachability*reach)
-    {
-        if (!reach.isReachable) {
-
-            NSLog(@"UNREACHABLE!");
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hacker News" message:@"No internet connection." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        });
-    };
-    
-    // Start the notifier, which will cause the reachability object to retain itself!
-    [reach startNotifier];
+//    };
+//    
+//    // Start the notifier, which will cause the reachability object to retain itself!
+//    [reach startNotifier];
 }
 
 
