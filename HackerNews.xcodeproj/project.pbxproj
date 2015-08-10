@@ -30,6 +30,7 @@
 		1B6882651B0B7BE700235DF2 /* StoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */; };
 		1B68826E1B0C7C9E00235DF2 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B68826C1B0C7C9E00235DF2 /* Fabric.framework */; };
 		1B68826F1B0C7C9E00235DF2 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B68826D1B0C7C9E00235DF2 /* Crashlytics.framework */; };
+		1B7B36D21B76A4C800859E7F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7B36D11B76A4C800859E7F /* Reachability.m */; };
 		1B7CA6EA1B32063500393B3F /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7CA6E81B32063500393B3F /* CommentTableViewCell.m */; };
 		1B7CA6EB1B32063500393B3F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */; };
 		1B906AE81A94AEC000AAF25D /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B906AE71A94AEC000AAF25D /* HomeTableViewController.m */; };
@@ -86,6 +87,8 @@
 		1B6882641B0B7BE700235DF2 /* StoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryTableViewCell.m; sourceTree = "<group>"; };
 		1B68826C1B0C7C9E00235DF2 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		1B68826D1B0C7C9E00235DF2 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		1B7B36D01B76A4C800859E7F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1B7B36D11B76A4C800859E7F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		1B7CA6E71B32063500393B3F /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
 		1B7CA6E81B32063500393B3F /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		1B7CA6E91B32063500393B3F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 		1BD353261B4DA86A00ED2B51 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1B7B36D01B76A4C800859E7F /* Reachability.h */,
+				1B7B36D11B76A4C800859E7F /* Reachability.m */,
 				1BD353271B4DA8C000ED2B51 /* Utils.h */,
 				1BD353281B4DA8C000ED2B51 /* Utils.m */,
 				1BD353301B4DAB1800ED2B51 /* NSString+RemoveTag.h */,
@@ -408,6 +413,7 @@
 				1B371779198E27F600FF0B04 /* AppDelegate.m in Sources */,
 				1B63FEEC1B2EF7E4004DD76C /* CommentsTableViewController.m in Sources */,
 				1BD353291B4DA8C000ED2B51 /* Utils.m in Sources */,
+				1B7B36D21B76A4C800859E7F /* Reachability.m in Sources */,
 				1B1B677F1B2B2F04007CD192 /* HNTabController.m in Sources */,
 				1B6882651B0B7BE700235DF2 /* StoryTableViewCell.m in Sources */,
 				1B371775198E27F600FF0B04 /* main.m in Sources */,

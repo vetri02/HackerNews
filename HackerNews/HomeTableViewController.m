@@ -13,6 +13,8 @@
 #import "NSDate+TimeAgo.h"
 #import "WebViewController.h"
 #import "CommentsTableViewController.h"
+#import "TSMessage.h"
+#import "Reachability.h"
 //#import "Reachability.h"
 
 
@@ -28,6 +30,7 @@
 @property (nonatomic, assign) NSInteger counter;
 @property (nonatomic, strong) StoryTableViewCell *prototypeCell;
 - (IBAction)refresh:(UIRefreshControl *)sender;
+@property (nonatomic) Reachability *internetReachability;
 
 
 
@@ -82,7 +85,7 @@
         [self getStoryDescriptionsUsingNewIDs:YES];
         //[listStories addObject:(snapshot.value)];
     } withCancelBlock:^(NSError *error) {
-        NSLog(@"%@", error.description);
+        //NSLog(@"%@", error.description);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hacker News" message:@"Error Fetching Stories." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }];
@@ -95,6 +98,7 @@
         for(NSNumber *itemNumber in self.temporaryTop500StoriesIds){
             [self getStoryDataOfItem:itemNumber usingNewIDs:usingNewIDs];
         }
+        [TSMessage dismissActiveNotification];
     }
     else{
         //        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastRefreshDate"];
@@ -142,12 +146,13 @@
         }
         if (self.counter == (self.temporaryTop500StoriesIds.count-3)) {
             [HUD hide:YES];
+            //[TSMessage dismissActiveNotification];
         }
         
         
     } withCancelBlock:^(NSError *error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hacker News" message:@"Error Fetching Stories." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hacker News" message:@"Error Fetching Stories." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        //[alert show];
     }
      ];
 }
@@ -163,6 +168,10 @@
     
     UINib *celllNib = [UINib nibWithNibName:@"StoryTableCellView" bundle:nil] ;
     [self.tableView registerNib:celllNib forCellReuseIdentifier:@"storyCell"];
+    
+    self.internetReachability = [Reachability reachabilityForInternetConnection];
+    [self.internetReachability startNotifier];
+    
     
     [self getTopStories];
     
@@ -180,15 +189,7 @@
 //    [UIColor.whiteColor setFill];
 //    [oval2Path fill];
     
-    NSURL *scriptUrl = [NSURL URLWithString:@"http://apps.wegenerlabs.com/hi.html"];
-    NSData *data = [NSData dataWithContentsOfURL:scriptUrl];
-    if (data){
-        NSLog(@"Device is connected to the internet");
-    }else{
-        NSLog(@"Device is not connected to the internet");
-    }
     
-
     
     if(HUD!=nil)
     {
@@ -224,45 +225,41 @@
     [self.refreshControl setTintColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1] /*#cccccc*/];
     //[self.refreshControl setAttributedTitle:string];
     
-    
-
-//    // Allocate a reachability object
-//    Reachability* reach = [Reachability reachabilityForInternetConnection];
-//    
-//    // Set the blocks
-//    reach.reachableBlock = ^(Reachability*reach)
-//    {
-//        // keep in mind this is called on a background thread
-//        // and if you are updating the UI it needs to happen
-//        // on the main thread, like this:
-//        
-////        dispatch_async(dispatch_get_main_queue(), ^{
-////            NSLog(@"REACHABLE!");
-////        });
-//    };
-//    
-//    reach.unreachableBlock = ^(Reachability*reach)
-//    {
-//        if (!reach.isReachable) {
-//
-//            NSLog(@"UNREACHABLE!");
-//        }
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hacker News" message:@"No internet connection." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//            [alert show];
-//        });
-//    };
-//    
-//    // Start the notifier, which will cause the reachability object to retain itself!
-//    [reach startNotifier];
 }
 
 
+- (void)updateInterfaceWithReachability:(Reachability *)reachability
+{
+    NetworkStatus netStatus = [reachability currentReachabilityStatus];
+    if (netStatus == NotReachable)
+    {
+        [TSMessage showNotificationInViewController:self.navigationController
+                                              title:@"No internet connection"
+                                           subtitle:@"Please, check your internet connection"
+                                              image:[UIImage imageNamed:@"NotificationBackgroundWarningIcon.png"]
+                                               type:TSMessageNotificationTypeMessage
+                                           duration:TSMessageNotificationDurationEndless
+                                           callback:nil
+                                        buttonTitle:nil
+                                     buttonCallback:nil
+                                         atPosition:TSMessageNotificationPositionTop
+                               canBeDismissedByUser:NO];
+        
+        
+    } else {
+        [TSMessage dismissActiveNotification];
+    }
+    
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.topItem.title = self.navTitle;
     self.title = self.navTitle;
+    
+    //NSLog(@"TestView");
+    [self updateInterfaceWithReachability:self.internetReachability];
+    
 }
 
 
@@ -280,7 +277,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     
-    //NSLog(@"%@", snapshot.value);
+    ////NSLog(@"%@", snapshot.value);
     return [self.storiesArray count];
 }
 

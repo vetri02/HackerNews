@@ -287,7 +287,7 @@
             <objects>
                 <tableViewController id="fnA-Bg-GpQ" userLabel="News Page" customClass="CommentsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Htl-2K-sPi">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -439,16 +439,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZJY-Zr-hTg">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZJY-Zr-hTg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
                                 <color key="tintColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hTf-jy-juh">
-                                <rect key="frame" x="0.0" y="2" width="320" height="504"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hTf-jy-juh">
+                                <rect key="frame" x="0.0" y="2" width="320" height="458"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="458" id="ykD-pM-kI6"/>
+                                </constraints>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u8H-Y7-9RX">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8H-Y7-9RX">
                                 <rect key="frame" x="0.0" y="460" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="vc6-iY-Tdh"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem image="Safari Back" style="plain" id="6Of-Z4-Tdn">
                                         <color key="tintColor" red="0.91764705879999997" green="0.30196078430000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -482,6 +488,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.0078431377187371254" green="0.54901963472366333" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="hTf-jy-juh" firstAttribute="trailing" secondItem="ZJY-Zr-hTg" secondAttribute="trailing" id="1Ga-At-W4Y"/>
+                            <constraint firstItem="hTf-jy-juh" firstAttribute="top" secondItem="ZJY-Zr-hTg" secondAttribute="bottom" id="1jh-d0-mH7"/>
+                            <constraint firstItem="hTf-jy-juh" firstAttribute="bottom" secondItem="u8H-Y7-9RX" secondAttribute="top" id="50b-WF-JOR"/>
+                            <constraint firstItem="hTf-jy-juh" firstAttribute="trailing" secondItem="u8H-Y7-9RX" secondAttribute="trailing" id="IT8-Gz-all"/>
+                            <constraint firstItem="SXX-Ir-wgT" firstAttribute="top" secondItem="u8H-Y7-9RX" secondAttribute="bottom" id="KHZ-eY-QEV"/>
+                            <constraint firstAttribute="trailing" secondItem="hTf-jy-juh" secondAttribute="trailing" id="dXb-rC-4tu"/>
+                            <constraint firstItem="hTf-jy-juh" firstAttribute="top" secondItem="G8O-2L-Orm" secondAttribute="top" constant="2" id="kDC-rH-qFe"/>
+                            <constraint firstItem="hTf-jy-juh" firstAttribute="leading" secondItem="u8H-Y7-9RX" secondAttribute="leading" id="kyb-2b-J63"/>
+                            <constraint firstItem="hTf-jy-juh" firstAttribute="leading" secondItem="G8O-2L-Orm" secondAttribute="leading" id="mwS-ou-djB"/>
+                            <constraint firstItem="hTf-jy-juh" firstAttribute="leading" secondItem="ZJY-Zr-hTg" secondAttribute="leading" id="uzw-xn-tiY"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="File system that stores location of file in Pi" id="bZM-O2-6k1">
@@ -570,8 +588,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="oCu-gc-rpo"/>
-        <segue reference="bAd-cN-Ihi"/>
+        <segue reference="8rF-nL-EbF"/>
+        <segue reference="cYG-mk-hRy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.91764705882352937" green="0.30196078431372547" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
 </document>

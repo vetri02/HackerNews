@@ -8,6 +8,7 @@ pod 'MBProgressHUD', '~> 0.9.1'
 pod 'NSDate+TimeAgo', '~> 1.0.2'
 pod 'UIWebView+Progress', :git => 'git@github.com:ishkawa/UIWebView-Progress.git'
 pod 'TUSafariActivity', '~> 1.0'
+pod "TSMessages"
 #pod 'Reachability', '~> 3.2'
 
 

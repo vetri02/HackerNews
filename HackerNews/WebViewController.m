@@ -85,7 +85,7 @@
 //                                                         forBarMetrics:UIBarMetricsDefault];
     
 
-    NSLog(@"%@", self.story);
+    //NSLog(@"%@", self.story);
     
     if ([self.story valueForKey:@"kids"] && [self.story valueForKey:@"kids"] != [NSNull null] && ![[self.story valueForKey:@"kids"]  isEqual: @""]){
         //[self.navigationItem.rightBarButtonItem setTintColor:[UIColor blackColor]];
@@ -125,7 +125,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView
 {
-    NSLog(@"finished loading");
+    //NSLog(@"finished loading");
     self.progressView.hidden = YES;
     CGRect frame = self.viewWeb.frame;
     frame.origin.y=0;//pass the cordinate which you want
@@ -147,7 +147,7 @@
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"start loading");
+    //NSLog(@"start loading");
     
     // Enable or disable back
     [self.webBack setEnabled:[self.viewWeb canGoBack]];
@@ -161,7 +161,7 @@
 -(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
 {
     //self.progressView = progress;
-    NSLog(@"%f", progress);
+    //NSLog(@"%f", progress);
     if(progress == 1.0){
         self.progressView.hidden = YES;
         CGRect frame = self.viewWeb.frame;

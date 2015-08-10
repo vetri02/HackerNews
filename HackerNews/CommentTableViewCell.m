@@ -87,7 +87,7 @@
     
     CGRect rect = [attributedString boundingRectWithSize:constraintSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) context:nil];
     
-    NSLog(@"%@", NSStringFromCGRect(rect));
+    //NSLog(@"%@", NSStringFromCGRect(rect));
     //Add back in the extra padding above and below label on table cell.
     if(rect.size.height < 100){
         const CGFloat topSpaceToSuperView = 40;

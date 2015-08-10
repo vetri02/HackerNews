@@ -43,7 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"%@", self.story);
+    //NSLog(@"%@", self.story);
     
     self.title = @"Comments";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -63,19 +63,25 @@
     [self.navigationItem setLeftBarButtonItem:barButtonItem];
     
     
-    self.loader = YES;
-    
-    self.ac = [[UIActivityIndicatorView alloc]
-               initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    
-    self.acview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    [self.ac startAnimating];
-    self.ac.frame = CGRectMake(0, 0, 320, 144);
-    [self.acview addSubview:self.ac]; // <-- Your UIActivityIndicatorView
-    
-    self.tableView.tableFooterView = self.acview;
     
     
+    if ([self.story valueForKey:@"kids"] && [self.story valueForKey:@"kids"] != [NSNull null] && ![[self.story valueForKey:@"kids"]  isEqual: @""]){
+        
+        self.loader = YES;
+        
+        self.ac = [[UIActivityIndicatorView alloc]
+                   initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        
+        self.acview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+        [self.ac startAnimating];
+        self.ac.frame = CGRectMake(0, 0, 320, 144);
+        [self.acview addSubview:self.ac]; // <-- Your UIActivityIndicatorView
+        
+        self.tableView.tableFooterView = self.acview;
+        
+    } else {
+    
+    }
     
     self.temporaryCommentsIds = [self.story valueForKey:@"kids"];
 
@@ -129,7 +135,7 @@
                 [self.commentList addObject:comment];
             }
             
-            NSLog(@"%@", snapshot.value);
+            //NSLog(@"%@", snapshot.value);
             
 //            [self.tableView beginUpdates];
 //            [self.commentList addObject:snapshot.value];
@@ -152,7 +158,7 @@
         } else {
             self.count++;
             if (self.count == self.temporaryCommentsIds.count) {
-                                NSLog(@"%@", self.commentList);
+                                //NSLog(@"%@", self.commentList);
                 NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:FALSE];
                 NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject:sortDescriptor];
                 
@@ -270,7 +276,7 @@
 
 - (void)downloadKidsForComment:(NSDictionary *)comment {
     
-    NSLog(@"%@", comment);
+    //NSLog(@"%@", comment);
     
     NSArray *kidsArr = [comment objectForKey:@"kids"];
     for(NSNumber *itemNumber in kidsArr){
