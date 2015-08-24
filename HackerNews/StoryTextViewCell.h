@@ -8,12 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StoryTextViewCell : UITableViewCell
+@protocol TextUrlDelegate;
+
+
+@interface StoryTextViewCell : UITableViewCell<UITextViewDelegate>
 //@property (weak, nonatomic) IBOutlet UILabel *textCell;
 @property (weak, nonatomic) IBOutlet UITextView *storyText;
 
 @property (strong, nonatomic) NSDictionary *story;
+@property (weak, nonatomic) id<TextUrlDelegate> textUrlDelegate;
 
 + (CGFloat)heightForStory:(NSDictionary *)story;
+
+@end
+
+@protocol TextUrlDelegate <NSObject>
+
+- (void)openUrl:(NSURL *)urlString;
 
 @end

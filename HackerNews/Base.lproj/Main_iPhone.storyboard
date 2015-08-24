@@ -288,7 +288,7 @@
             <objects>
                 <tableViewController id="fnA-Bg-GpQ" userLabel="News Page" customClass="CommentsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Htl-2K-sPi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -437,7 +437,7 @@
                         <viewControllerLayoutGuide type="bottom" id="SXX-Ir-wgT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G8O-2L-Orm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZJY-Zr-hTg">
@@ -445,14 +445,11 @@
                                 <color key="tintColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hTf-jy-juh">
-                                <rect key="frame" x="0.0" y="2" width="320" height="458"/>
+                                <rect key="frame" x="0.0" y="2" width="320" height="522"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="458" id="ykD-pM-kI6"/>
-                                </constraints>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8H-Y7-9RX">
-                                <rect key="frame" x="0.0" y="460" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="vc6-iY-Tdh"/>
                                 </constraints>
@@ -589,7 +586,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8rF-nL-EbF"/>
+        <segue reference="bAd-cN-Ihi"/>
         <segue reference="cYG-mk-hRy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.91764705882352937" green="0.30196078431372547" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>

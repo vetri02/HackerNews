@@ -15,7 +15,7 @@
 #import "WebViewController.h"
 
 
-@interface CommentsTableViewController ()<CommentUrlDelegate>
+@interface CommentsTableViewController ()<CommentUrlDelegate, TextUrlDelegate>
 
 @property (nonatomic, strong) NSMutableArray *temporaryCommentsIds;
 @property (nonatomic, strong) NSMutableArray *commentList;
@@ -225,6 +225,7 @@
         }
         // Get data from the array at position of the row
         cell.story = self.story;
+        
         [cell layoutIfNeeded];
         [cell setNeedsLayout];
         return cell;
@@ -239,7 +240,10 @@
             
             // Get data from the array at position of the row
             cell.story = self.story;
+            cell.textUrlDelegate = self;
         
+        
+            
         
             [cell layoutIfNeeded];
             [cell setNeedsLayout];
